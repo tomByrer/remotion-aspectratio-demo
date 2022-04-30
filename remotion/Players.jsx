@@ -169,6 +169,9 @@ export function Players() {
 				/>
 
 				<div>
+					<button type="button" onClick={()=> runController(`toggle()`)}>
+						⏯️ Toggle
+					</button>
 					<span>
 						<button type="button" onClick={()=> runController(`seekTo(50)`)}>
 							seekTo 50
