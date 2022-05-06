@@ -146,7 +146,7 @@ export function Players() {
 				style={{
 					alignSelf: 'start',
 					opacity: (isHovering ? 1 : 0.1618),
-					width: 'clamp(475px, 30vw, 1000px)',
+					width: '100%',
 			}}>
 				<Player
 					component={Controller}
@@ -163,7 +163,7 @@ export function Players() {
 					controls
 					style={{
 						height: '76px',
-						width: 'clamp(475px, 30vw, 1000px)',
+						width: '100%',
 						backgroundColor: 'black',
 					}}
 				/>
@@ -212,13 +212,16 @@ export function Players() {
 						</button>
 					</span>
 				</div>
+			</div>
 
+		<div>
 			<div
 				className='log'
 				onMouseEnter={()=> setIsHovering(true)}
 				onMouseLeave={()=> setIsHovering(false)}
 				style={{
 					alignSelf: 'start',
+					minWidth: '350px',
 					opacity: (isHovering ? 1 : 0.1618),
 			}}>
 				<h4>Log</h4>

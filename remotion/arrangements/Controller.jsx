@@ -16,7 +16,7 @@ export function Controller({
 			<pre><code
 				style={{
 					position: 'absolute',
-					margin: '-25px 0 0 355px',
+					margin: '-9px 0 0 355px',
 					color: frontColor,
 					fontFamily: 'monospace',
 					fontSize: '27px',
