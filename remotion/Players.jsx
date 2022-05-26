@@ -170,7 +170,7 @@ export function Players() {
 
 				<div>
 					<button type="button" onClick={()=> runController(`toggle()`)}>
-						⏯️ Toggle
+						⏯️ Play|Pause
 					</button>
 					<span>
 						<button type="button" onClick={()=> runController(`seekTo(50)`)}>
@@ -242,7 +242,7 @@ export function Players() {
 				Load Short
 			</button> */}
 
-			<p>Use buttons to change the script.  Below is the JSON configureation.  Experiment by editing it!  If you 'break' the video, then reload the page.</p>
+			<p>Below is the JSON configureation.  Experiment by editing it!  If you 'break' the video, then reload the page.</p>
 			<textarea
 				onChange={(e)=> setValTextarea(JSON.parse(e.target.value))}
 				value={JSON.stringify(valTextarea, undefined, 2) /*OPTIMIZE*/}
