@@ -2,7 +2,7 @@ import { useCurrentFrame, Sequence, Series } from "remotion"
 import * as useConvert from '../helpers/useConvert'
 import { prep } from '../helpers/prep-transcript'
 
-import {SimpleText} from '../segments/SimpleText'
+import {SimpleGridText} from '../segments/SimpleGridText'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
 
@@ -34,25 +34,21 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 							durationInFrames={aspects.timeDurFrames}
 							key={key}
 						>
-							<ThreeRowsImgTitleSub
-								durationInSeconds={aspects.timeDurSecs}
-								aspects={aspects}
-							/>
+							<ThreeRowsImgTitleSub aspects={aspects} />
 						</Sequence>
 					)
 					break;
 
 				case 'FrameCount':
+					aspects.title = String(useCurrentFrame()).padStart(aspects.digitCount,'_')
+
 					return(
 						<Sequence
 							from={aspects.timeSrtFrame}
 							durationInFrames={aspects.timeDurFrames}
 							key={key}
 						>
-							<SimpleText
-								titleText={String(useCurrentFrame()).padStart(7,'_')}
-								aspects={aspects}
-							/>
+							<SimpleGridText aspects={aspects} />
 						</Sequence>
 					)
 					break;
@@ -64,7 +60,9 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 							durationInFrames={aspects.timeDurFrames}
 							key={key}
 						>
-							<div>default from {aspects.timeSrtFrame} to {aspects.timeDurFrames}</div>
+							<div>
+								default: frames {aspects.timeSrtFrame} to {aspects.timeSrtFrame + aspects.timeDurFrames}
+							</div>
 						</Sequence>
 					)
 			}

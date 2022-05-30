@@ -12,11 +12,10 @@ import Link from 'next/link'
 import { Players } from '../remotion/Players'
 
 import { transcriptAboutRemotion } from '../remotion/transcripts/about-remotion'
-import { transcriptShortRemotion } from '../remotion/transcripts/short-remotion'
 import { transcriptTimeTest } from '../remotion/transcripts/time-test'
 
 export default function Home() {
-	const [showAbout, setShowAbout] = useState(true)
+	const [showAbout, setShowAbout] = useState(false)
 	const [showTimeTest, setShowTimeTest] = useState(true)
 	function loadTranscript(t){
 		console.log('load', t)
