@@ -68,33 +68,13 @@ export default function Home() {
           align-items: center;
         }
 
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a,
-        .description a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active,
-        .description a:hover,
-        .description a:focus,
-        .description a:active {
-          text-decoration: underline;
-        }
-
         h1 {
           font-size: 1.62rem;
           line-height: 1.6;
         }
         h2 {
-          font-size: 1.4rem;
-          line-height: 1.4;
+          font-size: 1.44rem;
+          line-height: 1.44;
         }
 
         .title,
@@ -141,6 +121,16 @@ export default function Home() {
           box-sizing: border-box;
         }
 
+        a {
+          color: #0070f3;
+          text-decoration: none;
+        }
+
+        a:hover,
+        a:focus,
+        a:active {
+          text-decoration: underline;
+        }
 
         .player {
           padding-left: 22px;
@@ -152,7 +142,7 @@ export default function Home() {
           color: #000;
 
           margin-left: 27px;
-          transform-origin: -27px 0;
+          transform-origin: -33px 4px;
           transform: rotate(90deg);
         }
 
@@ -170,15 +160,16 @@ export default function Home() {
 
         .log {
           margin-top: 27px;
-          font-size: 1.162em;
           height: 13em;
+          width: 430px;
+          font-size: 1.162em;
         }
         .transcript, .webvtt {
           margin-top: 27px;
           width: 28em;
         }
         textarea {
-          height: 18em;
+          height: 20em;
           width: inherit;
           font-size: 1.162em;
         }

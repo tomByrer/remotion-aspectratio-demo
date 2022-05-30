@@ -145,11 +145,12 @@ export function Players() {
 				onMouseLeave={()=> setIsHovering(false)}
 				style={{
 					alignSelf: 'start',
-					opacity: (isHovering ? 1 : 0.1618),
+					opacity: (isHovering ? 1 : 0.618),
 					width: '100%',
 			}}>
 				<Player
 					component={Controller}
+					className='controller'
 					inputProps={{
 						speed: playbackRate,
 					}}
@@ -235,7 +236,13 @@ export function Players() {
 			</div>
 		</div>
 
-		<div className='transcript'>
+		<div
+			className='transcript'
+			onMouseEnter={()=> setIsHovering(true)}
+			onMouseLeave={()=> setIsHovering(false)}
+			style={{
+				opacity: (isHovering ? 1 : 0.618),
+		}}>
 			<h4>Transcript</h4>
 
 			{/* <button type="button"	onClick={()=> loadTranscript(transcriptTimeTest)}>
@@ -250,10 +257,17 @@ export function Players() {
 			</textarea>
 		</div>
 
-		<div className='webvtt'>
+		<div
+			className='webvtt'
+			onMouseEnter={()=> setIsHovering(true)}
+			onMouseLeave={()=> setIsHovering(false)}
+			style={{
+				opacity: (isHovering ? 1 : 0.618),
+		}}>
 			<h4>WebVTT</h4>
-
-			<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API#webvtt_files">Web Video Text Tracks (captions)</a></p>
+			<p>
+				<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API#webvtt_files">Web Video Text Tracks (captions)</a>, auto generated from the Transcript.
+			</p>
 			<textarea
 				value={preparedTR.vtt}
 			>
@@ -263,7 +277,7 @@ export function Players() {
 			{ Object.entries(aspectratios).map( ([arName, data],i)=>
 				<div className='player' key={'playerdiv'+ i + arName}>
 					<h6 style={{
-						opacity: (isHovering ? 1 : 0.1618),
+						opacity: (isHovering ? 1 : 0.323),
 					}}>
 						{data.info.ratio +' ~ '+ data.info.about}
 					</h6>

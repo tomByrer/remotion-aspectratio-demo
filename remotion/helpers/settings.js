@@ -29,7 +29,7 @@ export const aRs = {
 	},
 	'16:9': {
 		info: {
-			about: 'HDTV: common horizontally wide ratio',
+			about: 'HDTV: common wide ratio',
 			ratio: '16/9',
 			float: 1.777777777,
 		},
