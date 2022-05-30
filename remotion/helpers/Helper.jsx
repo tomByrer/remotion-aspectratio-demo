@@ -16,14 +16,14 @@ export function NiceComposition({
 }){
 	return (
 		<Composition
-				id={id}
-				component={component}
-				fps={fps}
-				durationInFrames={durationInFrames}
-				width={width}
-				height={height}
-				defaultProps={defaultProps}
-			/>
+			id={id}
+			component={component}
+			fps={fps}
+			durationInFrames={durationInFrames}
+			width={width}
+			height={height}
+			defaultProps={defaultProps}
+		/>
 	)
 }
 
