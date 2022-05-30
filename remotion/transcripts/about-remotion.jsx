@@ -2,7 +2,7 @@ export const transcriptAboutRemotion = [
 	{
 		layout: 'IntroCode',
 		timeDurSecs: 3.75,
-		title: '{{techText}}',
+		title: '{{playerConfigStr}}',
 		fontVWRatio: 3.5,
 		colorBack: '#10131f',
 		colorFront: '#d9d0c6',

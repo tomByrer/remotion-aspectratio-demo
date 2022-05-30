@@ -12,25 +12,19 @@ import { Player } from "@remotion/player";
 import * as settings from "./helpers/settings"
 import { MODE } from '../CONFIG'
 import { prep } from './helpers/prep-transcript'
-
-import { transcriptAboutRemotion } from "./transcripts/about-remotion"
-import { transcriptShortRemotion } from "./transcripts/short-remotion"
-import { transcriptTimeTest } from "./transcripts/time-test"
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 import { Controller } from "./arrangements/Controller"
 
-export function Players() {
+export function Players({transcript, title}) {
 
 	// transcript data
-	const [valTextarea, setValTextarea] = useState(transcriptAboutRemotion)
+	const [valTextarea, setValTextarea] = useState(transcript)
 	const [preparedTR, setPreparedTR] = useState( prep(valTextarea) )
 	const [durationInFrames, setDurationInFrames]= useState(preparedTR.tr.at(-1).timeEndFrame)
 	useEffect(()=>{
 		setPreparedTR( prep(valTextarea) )
 		setDurationInFrames( preparedTR.tr.at(-1).timeEndFrame ) //COMPAT ES2021, Node16.6
-		// console.log('imprted TR', transcriptAboutRemotion[1])
-		// console.log('valTextarea', valTextarea[1])
-		console.log('preparedTR', preparedTR.tr)
+		// console.log('preparedTR', preparedTR.tr)
 	}, valTextarea)
 
 	// player convig
@@ -47,11 +41,6 @@ export function Players() {
 	const [logs, setLogs] = useState(()=> ['Configuring: ', ...arNameList, 'Playback speed: '+ playbackRate])
 	function addLog(log){
 		setLogs((l) => [...l, ` ${Date.now()} ${log}`])
-	}
-
-	function loadTranscript(t){
-		addLog('load '+ t)
-		setValTextarea(t)
 	}
 
 	// players setup
@@ -131,6 +120,11 @@ export function Players() {
 	}, []);
 
 	return (<>
+		<h2 className="title" style={{
+			marginTop: '1em',
+		}}>
+			{title}
+		</h2>
 		<div style={{
 			display: 'flex',
 			flexWrap: 'wrap',
@@ -226,11 +220,11 @@ export function Players() {
 					opacity: (isHovering ? 1 : 0.1618),
 			}}>
 				<h4>Log</h4>
+				{/* //bug will overflow when manually moving srubbar; seems new in Remotion 3.0 */}
 				{logs
 					.slice(0)
 					.reverse()
 					.slice(0, 7)
-					.reverse()
 					.map((l)=> <div key={l}>{l}</div>)
 				}
 			</div>
@@ -285,7 +279,7 @@ export function Players() {
 						component={ArrangeSeries}
 						inputProps={{
 							transcript: preparedTR.tr,
-							techText: `aspectratio: ${arName}-${data.info.ratio} ${JSON.stringify(data.dimention)}`,
+							playerConfigStr: `aspectratio: ${arName}-${data.info.ratio} ${JSON.stringify(data.dimention)}`,
 						}}
 						fps={fps}
 						durationInFrames={durationInFrames}

@@ -2,7 +2,7 @@ export const transcriptTimeTest = [
 	{
 		layout: 'IntroCode',
 		timeSrtSec: 0,
-		title: '{{techText}}',
+		title: '{{playerConfigStr}}',
 		fontVWRatio: 3.5,
 		colorBack: '#738678',
 		colorFront: '#e6eae7',

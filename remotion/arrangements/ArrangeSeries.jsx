@@ -5,14 +5,14 @@ import { prep } from '../helpers/prep-transcript'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
 
-export function ArrangeSeries({transcript, techText}) {
+export function ArrangeSeries({transcript, playerConfigStr}) {
 
 	return (<>
 		{transcript.map( function(aspects, i){
 			const durFrames = useConvert.seconds(aspects.timeDurSecs)
 			const key = i + aspects.layout
 			if(aspects.layout==='IntroCode'){
-				aspects.title = aspects.title.replace(/{{techText}}/, techText)
+				aspects.title = aspects.title.replace(/{{playerConfigStr}}/, playerConfigStr)
 				return(
 					<Sequence
 						from={aspects.timeSrtFrame}
