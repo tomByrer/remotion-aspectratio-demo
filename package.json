@@ -1,8 +1,7 @@
 {
   "name": "remotion-aspectratio-demo",
   "version": "0.0.20",
-  "description": "Remotion Player System
-  By Tom Byrer using Remotion",
+  "description": "Remotion Player System By Tom Byrer using Remotion",
   "license": "copyright 2022",
   "contributors": [
     "Tom Byrer (https://github.com/tomByrer)"
@@ -21,17 +20,17 @@
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
-    "@remotion/bundler": "^3.0.3",
-    "@remotion/cli": "^3.0.3",
-    "@remotion/player": "^3.0.3",
-    "@remotion/renderer": "^3.0.3",
+    "@remotion/bundler": "^3.0.12",
+    "@remotion/cli": "^3.0.12",
+    "@remotion/player": "^3.0.12",
+    "@remotion/renderer": "^3.0.12",
     "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-jsx-parser": "^1.29.0",
-    "remotion": "^3.0.3"
+    "remotion": "^3.0.12"
   },
   "devDependencies": {
-    "babel-plugin-transform-define": "^1.3.2"
+    "babel-plugin-transform-define": "^2.0.1"
   }
 }

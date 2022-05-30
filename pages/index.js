@@ -11,12 +11,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <h3 className="title">
-          Remotion Player System
-        </h3>
-        <h4 className="title">
-          By <Link href="/">Tom Byrer</Link> using <a href="https://www.remotion.dev/" target="_blank">Remotion</a>
-        </h4>
+        <h1 className="title">
+          <a href="https://www.remotion.dev/" target="_blank">Remotion</a> AspectRatio Demo by <a href="https://github.com/tomByrer" target="_blank">Tom Byrer</a>
+        </h1>
+        <h2 className="title">
+           Remotion Promo
+        </h2>
+        <p className="description">
+          Please help by leaving <a href="https://github.com/tomByrer/remotion-aspectratio-demo/" target="_blank">&#11088; stars & issues on GitHub</a>.
+        </p>
 
         <Players />
       </main>
@@ -70,25 +73,33 @@ export default function Home() {
           text-decoration: none;
         }
 
-        .title a {
+        .title a,
+        .description a {
           color: #0070f3;
           text-decoration: none;
         }
 
         .title a:hover,
         .title a:focus,
-        .title a:active {
+        .title a:active,
+        .description a:hover,
+        .description a:focus,
+        .description a:active {
           text-decoration: underline;
         }
 
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 1.6rem;
+        h1 {
+          font-size: 1.62rem;
+          line-height: 1.6;
+        }
+        h2 {
+          font-size: 1.4rem;
+          line-height: 1.4;
         }
 
         .title,
         .description {
+          margin: 0;
           text-align: center;
         }
 
