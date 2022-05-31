@@ -21,18 +21,18 @@ export function vw(w=100){
 	return w * useVideoConfig().width * 0.01
 }
 
-function sizeMax(maxFloor){
-	return Math.max(useVideoConfig().height, useVideoConfig().width, maxFloor)
+function sizeMax(maxCeil){
+	return Math.max(useVideoConfig().height, useVideoConfig().width, maxCeil)
 }
-export function vmax(size=100, maxFloor=null){
-	return size * sizeMax(maxFloor) * 0.01
+export function vmax(size=100, maxCeil=null){
+	return size * sizeMax(maxCeil) * 0.01
 }
 
-function sizeMin(){
-	return Math.min(useVideoConfig().height, useVideoConfig().width)
+function sizeMin(minFloor){
+	return Math.min(useVideoConfig().height, useVideoConfig().width, minFloor)
 }
-export function vmin(size=100){
-	return size * sizeMin() * 0.01
+export function vmin(size=100, minFloor=null){
+	return size * sizeMin(minFloor) * 0.01
 }
 
 export function diffMaxMin(size=1){
@@ -53,6 +53,15 @@ export function cvw(w=0){ // negitive = left
 
 export function aspectRatio(){
 	return useVideoConfig().width / useVideoConfig().height
+}
+export function isSquare(){
+	return aspectRatio() === 1
+}
+export function isTall(){
+	return aspectRatio() < 1
+}
+export function isWide(){
+	return aspectRatio() > 1
 }
 
 export function aRSquareness(){
