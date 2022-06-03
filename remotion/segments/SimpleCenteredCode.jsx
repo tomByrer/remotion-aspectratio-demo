@@ -4,14 +4,17 @@ import * as useConvert from '../helpers/useConvert'
 
 // import './FrameCount.css'
 
-export const SimpleGridText = ({
+export const SimpleCenteredCode = ({
 	aspects={
-		timeDurSecs: 2,
-		title: 'def title text',
-		placeItems: 'center',
-		fontVWRatio: 9,
 		colorBack: '#111',
 		colorFront: '#eee',
+		colorFrontCenter: null,
+		fontVWRatio: 9,
+		placeItems: 'center',
+		textBottom: 'bottom',
+		textCenter: 'def code text',
+		textTop: 'top',
+		timeDurSecs: 2,
 	}
 }) => {
 	const frame = useCurrentFrame();
@@ -32,18 +35,32 @@ export const SimpleGridText = ({
 			minHeight: useConvert.vh(),
 			minWidth: useConvert.vw(),
 			display: 'grid',
+			gridAutoRows: '1fr',
 			placeItems: aspects.placeItems,
 			backgroundColor: aspects.colorBack,
 		}}>
-
-			<code
+			<div
 				style={{
 					color: aspects.colorFront,
-					fontSize: useConvert.vw(aspects.fontVWRatio)
+					fontSize: useConvert.vHWResponsive(0, 0.2, 0, 0),
+			}}>
+				{aspects.textTop}
+			</div>
+			<code
+				style={{
+					color: aspects.colorFrontCenter ?? aspects.colorFront,
+					fontSize: useConvert.sizeFont(100),
 				}}
 			>
-				{aspects.title}
+				{aspects.textCenter}
 			</code>
+			<div
+				style={{
+					color: aspects.colorFront,
+					fontSize: useConvert.vHWResponsive(0.2, 0.2, 0.2, 0.2),
+			}}>
+				{aspects.textBottom}
+			</div>
 		</div>
 	);
 };

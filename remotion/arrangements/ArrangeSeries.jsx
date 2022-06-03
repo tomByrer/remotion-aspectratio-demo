@@ -2,7 +2,7 @@ import { useCurrentFrame, Sequence, Series } from "remotion"
 import * as useConvert from '../helpers/useConvert'
 import { prep } from '../helpers/prep-transcript'
 
-import {SimpleGridText} from '../segments/SimpleGridText'
+import {SimpleCenteredCode} from '../segments/SimpleCenteredCode'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
 
@@ -48,7 +48,7 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 							durationInFrames={aspects.timeDurFrames}
 							key={key}
 						>
-							<SimpleGridText aspects={aspects} />
+							<SimpleCenteredCode />
 						</Sequence>
 					)
 					break;

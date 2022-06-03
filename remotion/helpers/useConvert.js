@@ -35,9 +35,9 @@ export function vmin(size=100, minFloor=null){
 	return size * sizeMin(minFloor) * 0.01
 }
 
-export function diffMaxMin(size=1){
-	return vmax(size) - vmin(size)
-}
+// export function diffMaxMin(size=1){
+// 	return vmax(size) - vmin(size)
+// }
 
 /* Space - Centered */
 
@@ -73,6 +73,8 @@ export function aRSquareness(){
 	}
 }
 
+/* Resizing Abstractions */
+
 export function safeWidthShrink(w, ratioBoundry){
 	if (aspectRatio() >= ratioBoundry)
 		return w
@@ -89,6 +91,13 @@ export function safeWidthGrow(w){
 		resized -= resized*resized*0.11 //compress growth
 		return resized
 	}
+}
+
+export function vHWResponsive(vHeight=100, vWidth=100, vMinimum=100, vMaximum=100){
+	return vh(vHeight) + vw(vWidth) + vmin(vMinimum) + vmax(vMaximum)
+}
+export function sizeFont(s=100){
+	return vHWResponsive(0.012*s, 0.062*s, 0.04*s, 0.01*s)
 }
 
 export function fitScaleHeight({
