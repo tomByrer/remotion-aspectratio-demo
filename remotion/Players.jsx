@@ -30,7 +30,7 @@ export function Players({transcript, title}) {
 	// player convig
 	const [fps, setFps] = useState(settings.presets[MODE].fps)
 
-	const [aspectratios, setaspectratios] = useState(settings.presets[MODE].vidSizes)
+	const [aspectratios, setAspectratios] = useState(settings.presets[MODE].vidSizes)
 	let arNameList = Object.keys(aspectratios)
 	const [playbackRate, setPlaybackRate] = useState(settings.presets[MODE].player.speed)
 
@@ -72,6 +72,22 @@ export function Players({transcript, title}) {
 	function setAllPlaybackRate(n){
 		addLog('setPlaybackRate: '+ n)
 		setPlaybackRate(n)
+	}
+
+	function shuffleObject(obj){
+		let newObj = {}
+		var keys = Object.keys(obj)
+			keys.sort(function(a,b){return Math.random()- 0.5;})
+			keys.forEach(function(k) { newObj[k] = obj[k]});
+		return newObj;
+	}
+	function rndPlayerOrder(){
+		addLog('randomize player order')
+		setAspectratios(shuffleObject(aspectratios))
+	}
+	function restorePlayerOrder(){
+		addLog('restore player order')
+		setAspectratios(settings.presets[MODE].vidSizes)
 	}
 
 	useEffect(() => {
@@ -204,6 +220,14 @@ export function Players({transcript, title}) {
 						</button>
 						<button type="button"	onClick={()=> setAllPlaybackRate(2)}>
 							🐇 2x speed
+						</button>
+					</span>
+					<span>
+						<button type="button" onClick={()=> rndPlayerOrder()}>
+							RND player order
+						</button>
+						<button type="button" onClick={()=> restorePlayerOrder()}>
+							reorder players
 						</button>
 					</span>
 				</div>
