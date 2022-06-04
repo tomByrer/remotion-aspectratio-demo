@@ -42,7 +42,7 @@ export const SimpleCenteredCode = ({
 			<div
 				style={{
 					color: aspects.colorFront,
-					fontSize: useConvert.vHWResponsive(0, 0.2, 0, 0),
+					fontSize: useConvert.sizeFont(61.8),
 			}}>
 				{aspects.textTop}
 			</div>
@@ -57,7 +57,7 @@ export const SimpleCenteredCode = ({
 			<div
 				style={{
 					color: aspects.colorFront,
-					fontSize: useConvert.vHWResponsive(0.2, 0.2, 0.2, 0.2),
+					fontSize: useConvert.sizeFont(61.8),
 			}}>
 				{aspects.textBottom}
 			</div>

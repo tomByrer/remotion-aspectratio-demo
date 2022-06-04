@@ -97,7 +97,7 @@ export function vHWResponsive(vHeight=100, vWidth=100, vMinimum=100, vMaximum=10
 	return vh(vHeight) + vw(vWidth) + vmin(vMinimum) + vmax(vMaximum)
 }
 export function sizeFont(s=100){
-	return vHWResponsive(0.012*s, 0.062*s, 0.04*s, 0.01*s)
+	return vHWResponsive(0.012*s, 0.062*s, 0.04*s, (0.01 + isSquare()*0.004)*s)
 }
 
 export function fitScaleHeight({
