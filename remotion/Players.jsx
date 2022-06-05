@@ -233,7 +233,7 @@ export function Players({transcript, title}) {
 							reorder players
 						</button>
 						<button type="button"	onClick={()=> setHideOutputText(!hideOutputText)}>
-							{ hideOutputText ? 'Hide 📕' : 'Show 📖' } log, Transcript, WebVTT
+							{ hideOutputText ? 'Show 📖' : 'Hide 📕' } log, Transcript, WebVTT
 						</button>
 					</span>
 				</div>
