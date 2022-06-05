@@ -36,6 +36,8 @@ export function Players({transcript, title}) {
 
 	// UX show controlls on hover
   const [isHovering, setIsHovering] = useState(false)
+	// display log, Transcript, WebVTT??
+	const [hideOutputText, setHideOutputText] = useState(true)
 
 	// loging
 	const [logs, setLogs] = useState(()=> ['Configuring: ', ...arNameList, 'Playback speed: '+ playbackRate])
@@ -223,16 +225,23 @@ export function Players({transcript, title}) {
 						</button>
 					</span>
 					<span>
+						<span>msc: </span>
 						<button type="button" onClick={()=> rndPlayerOrder()}>
 							RND player order
 						</button>
 						<button type="button" onClick={()=> restorePlayerOrder()}>
 							reorder players
 						</button>
+						<button type="button"	onClick={()=> setHideOutputText(!hideOutputText)}>
+							{ hideOutputText ? 'Hide 📕' : 'Show 📖' } log, Transcript, WebVTT
+						</button>
 					</span>
 				</div>
 			</div>
 
+		{ hideOutputText
+			? null
+			: <>
 		<div>
 			<div
 				className='log'
@@ -291,6 +300,7 @@ export function Players({transcript, title}) {
 			>
 			</textarea>
     </div>
+		</>}
 
 			{ Object.entries(aspectratios).map( ([arName, data],i)=>
 				<div className='player' key={'playerdiv'+ i + arName}>

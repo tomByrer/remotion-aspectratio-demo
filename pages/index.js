@@ -40,7 +40,7 @@ export default function Home() {
 				</p>
 				<h2 className="title">
 					Film toggles:
-					<button type="button"	onClick={()=> setShowAbout(!showTimeTest)}>
+					<button type="button"	onClick={()=> setShowAbout(!showAbout)}>
 						{ showAbout ? 'Hide 📕' : 'Show 📖' } 'Short Remotion Promo'
 					</button>
 					<button type="button"	onClick={()=> setShowTimeTest(!showTimeTest)}>
