@@ -15,6 +15,6 @@ export const transcriptTimeTest = [
 		digitCount: 3, //TODO: change this & fontVWRatio together
 		fontVWRatio: 44,
 		colorBack: 'linen',
-		colorFront: 'orange',
+		colorFront: 'darkorange',
 	},
 ]

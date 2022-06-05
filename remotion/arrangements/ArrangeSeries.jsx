@@ -1,4 +1,4 @@
-import { useCurrentFrame, Sequence, Series } from "remotion"
+import { useCurrentFrame, useVideoConfig, Sequence, Series } from "remotion"
 import * as useConvert from '../helpers/useConvert'
 import { prep } from '../helpers/prep-transcript'
 
@@ -41,8 +41,12 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 					break;
 
 				case 'FrameCount':
-					aspects.codeLeft = String(useCurrentFrame()).padStart(aspects.digitCount,'_')
-					aspects.codeRight = String( useConvert.frames2seconds(useCurrentFrame()).toFixed(2) ).padStart(aspects.digitCount + 2,'_')
+					//MUST obtain frame count at top-level, before Sequence
+					aspects.codeLeft = useCurrentFrame().toFixed().padStart(aspects.digitCount,'_')
+					const ROUNDOFF = 2
+					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame()).toFixed(ROUNDOFF).padStart(aspects.digitCount + ROUNDOFF,'_')
+					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
+					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames )
 
 					return(
 						<Sequence

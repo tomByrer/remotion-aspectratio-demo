@@ -9,7 +9,6 @@ export function Controller({
 	backColor='#161b28d1',
 }) {
 	const frame = useCurrentFrame()
-	// const segmentFrames = useConvert.seconds(durationSeconds * 0.25)
 
 	return (
 		<div style={{flex: '90', backgroundColor: backColor}}>
