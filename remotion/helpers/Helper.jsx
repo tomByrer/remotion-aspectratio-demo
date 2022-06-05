@@ -29,7 +29,7 @@ export function NiceComposition({
 
 export function NiceSequence({
 	startSeconds=0,
-	startFrames=Math.round(useConvert.seconds(startSeconds)),
+	startFrames=Math.round(useConvert.seconds2frames(startSeconds)),
 	// durationInSeconds='Infinity', // optional number
 	// durationInFrames=durationInSeconds*fps,
 	layout='none', // or 'absolute-fill'

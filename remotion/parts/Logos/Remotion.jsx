@@ -50,7 +50,7 @@ export function LogoRemotion({
 	const videoConfig = useVideoConfig()
 	function scale(index) {
 		return spring({
-			frame: useCurrentFrame() - index * useConvert.seconds(animationSeconds),
+			frame: useCurrentFrame() - index * useConvert.seconds2frames(animationSeconds),
 			fps: videoConfig.fps,
 			config: {
 				mass: 2,

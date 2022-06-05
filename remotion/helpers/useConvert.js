@@ -2,13 +2,15 @@ import {useVideoConfig} from 'remotion'
 
 /* Time */
 
-export function seconds(sec){
+export function seconds2frames(sec){
 	// rounding up vs down (floor) ensures no blank/unclaimed frames at video end
 	return Math.ceil( sec * useVideoConfig().fps )
 }
-
 export function framesUnclaimed(sec){
-	return useVideoConfig().durationInFrames - seconds(sec)
+	return useVideoConfig().durationInFrames - seconds2frames(sec)
+}
+export function frames2seconds(frames){
+	return frames / useVideoConfig().fps
 }
 
 /* Space */

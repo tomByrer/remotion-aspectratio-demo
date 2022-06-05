@@ -92,7 +92,7 @@ export function LogoReact({
 		},
 		fps: videoConfig.fps,
 	})
-	// const frameLimit = useConvert.seconds(1.66666)
+	// const frameLimit = useConvert.seconds2frames(1.66666)
 	// const scale = (frame < frameLimit) ? scaleIn : 1
 	const logoRotation = interpolate(
 		frame,

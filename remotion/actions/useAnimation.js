@@ -4,8 +4,8 @@ import * as useConvert from '../helpers/useConvert';
 export function fadeIn(seconds=0.618, widen) {
 	const frame = useCurrentFrame()
 	const frameLen = (typeof seconds !== 'undefined')
-							? useConvert.seconds(seconds)
-							: useConvert.seconds(0.5)
+							? useConvert.seconds2frames(seconds)
+							: useConvert.seconds2frames(0.5)
 	const step = (typeof widen !== 'undefined')
 							? frameLen * widen
 							: frameLen * 0.25
@@ -23,7 +23,7 @@ export function fadeOut(seconds=0.5) {
 	const frame = useCurrentFrame()
 	return interpolate(
 		frame,
-		[0, useConvert.seconds(seconds)],
+		[0, useConvert.seconds2frames(seconds)],
 		[1, 0], {
 			extrapolateLeft: "clamp",
 			extrapolateRight: "clamp",
@@ -34,8 +34,8 @@ export function fadeOut(seconds=0.5) {
 export function fadeInOutTapered(seconds, widen) {
 	const frame = useCurrentFrame()
 	const frameLen = (typeof seconds !== 'undefined')
-							? useConvert.seconds(seconds)
-							: useConvert.seconds(0.5)
+							? useConvert.seconds2frames(seconds)
+							: useConvert.seconds2frames(0.5)
 	const step = (typeof widen !== 'undefined')
 							? frameLen * widen
 							: frameLen * 0.25

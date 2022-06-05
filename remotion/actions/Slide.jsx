@@ -3,7 +3,7 @@ import * as useConvert from '../helpers/useConvert';
 
 export function Lift({
 	distanceInVH = -13.8888,
-	transitionStart=useConvert.seconds(0.833333),
+	transitionStart=useConvert.seconds2frames(0.833333),
 	...props
 }){
 	const ultrawideAS = 2.388888888

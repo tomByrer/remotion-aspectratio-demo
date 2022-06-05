@@ -2,7 +2,8 @@ import { useCurrentFrame, Sequence, Series } from "remotion"
 import * as useConvert from '../helpers/useConvert'
 import { prep } from '../helpers/prep-transcript'
 
-import {SimpleCenteredCode} from '../segments/SimpleCenteredCode'
+// import {SimpleCenteredCode} from '../segments/SimpleCenteredCode'
+import {TwoCenteredCode} from '../segments/TwoCenteredCode'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
 
@@ -11,7 +12,7 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 
 	return (<>
 		{transcript.map( function(aspects, i){
-			// const durFrames = useConvert.seconds(aspects.timeDurSecs)
+			// const durFrames = useConvert.seconds2frames(aspects.timeDurSecs)
 			const key = i + aspects.layout
 			switch(aspects.layout){
 				case 'IntroCode':
@@ -40,7 +41,8 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 					break;
 
 				case 'FrameCount':
-					aspects.title = String(useCurrentFrame()).padStart(aspects.digitCount,'_')
+					aspects.codeLeft = String(useCurrentFrame()).padStart(aspects.digitCount,'_')
+					aspects.codeRight = String( useConvert.frames2seconds(useCurrentFrame()).toFixed(2) ).padStart(aspects.digitCount + 2,'_')
 
 					return(
 						<Sequence
@@ -48,7 +50,7 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 							durationInFrames={aspects.timeDurFrames}
 							key={key}
 						>
-							<SimpleCenteredCode />
+							<TwoCenteredCode aspects={aspects} />
 						</Sequence>
 					)
 					break;

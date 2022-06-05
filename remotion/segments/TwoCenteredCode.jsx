@@ -12,8 +12,8 @@ export const TwoCenteredCode = ({
 		fontVWRatio: 9,
 		placeItems: 'center',
 		textTop: 'top',
-		codeLeft: 'code left',
-		codeRight: 'code right',
+		codeLeft: 'left',
+		codeRight: 'right',
 		textLeft: 'text left',
 		textRight: 'text right',
 		timeDurSecs: 2,
@@ -46,13 +46,14 @@ export const TwoCenteredCode = ({
 				'codeLeft codeRight'
 				'textLeft textRight'`,
 			gridAutoRows: '1fr',
-			placeItems: aspects.placeItems,
-			textAlign: "center",
+			placeItems: 'center',
+			// textAlign: "center",
 			backgroundColor: aspects.colorBack,
 		}}>
 			<div
 				style={{
 					gridArea: 'textTop',
+					margin: '0 0.31em',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
 			}}>
@@ -60,6 +61,8 @@ export const TwoCenteredCode = ({
 			</div>
 			<code
 				style={{
+					gridArea: 'codeLeft',
+					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
 					fontSize: useConvert.sizeFont(100),
 				}}
@@ -68,6 +71,8 @@ export const TwoCenteredCode = ({
 			</code>
 			<code
 				style={{
+					gridArea: 'codeRight',
+					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
 					fontSize: useConvert.sizeFont(100),
 				}}
@@ -76,6 +81,10 @@ export const TwoCenteredCode = ({
 			</code>
 			<div
 				style={{
+					gridArea: 'textLeft',
+					alignSelf: 'start',
+					margin: '0 0.31em',
+					placeItems: 'start',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
 			}}>
@@ -83,6 +92,9 @@ export const TwoCenteredCode = ({
 			</div>
 			<div
 				style={{
+					gridArea: 'textRight',
+					alignSelf: 'start',
+					margin: '0 0.31em',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
 			}}>

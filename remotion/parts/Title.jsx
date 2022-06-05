@@ -37,7 +37,7 @@ export const Title = ({
 								marginLeft: margin,
 								transform: `scale(${spring({
 									fps: videoConfig.fps,
-									frame: frame - i * useConvert.seconds(0.1618),
+									frame: frame - i * useConvert.seconds2frames(0.1618),
 									config: {
 										damping: 100,
 										stiffness: 200,
