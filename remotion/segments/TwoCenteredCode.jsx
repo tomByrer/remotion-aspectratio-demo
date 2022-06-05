@@ -1,8 +1,6 @@
-import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
+import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion'
 
 import * as useConvert from '../helpers/useConvert'
-
-// import './FrameCount.css'
 
 export const TwoCenteredCode = ({
 	aspects={
@@ -47,7 +45,7 @@ export const TwoCenteredCode = ({
 				'textLeft textRight'`,
 			gridAutoRows: '1fr',
 			placeItems: 'center',
-			// textAlign: "center",
+			textAlign: "center",
 			backgroundColor: aspects.colorBack,
 		}}>
 			<div
@@ -62,6 +60,7 @@ export const TwoCenteredCode = ({
 			<code
 				style={{
 					gridArea: 'codeLeft',
+					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
 					fontSize: useConvert.sizeFont(100),
@@ -72,6 +71,7 @@ export const TwoCenteredCode = ({
 			<code
 				style={{
 					gridArea: 'codeRight',
+					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
 					fontSize: useConvert.sizeFont(100),
@@ -83,10 +83,10 @@ export const TwoCenteredCode = ({
 				style={{
 					gridArea: 'textLeft',
 					alignSelf: 'start',
-					margin: '0 0.31em',
+					margin: '0 1em',
 					placeItems: 'start',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFont(61.8),
+					fontSize: useConvert.sizeFont(68),
 			}}>
 				{aspects.textLeft}
 			</div>
@@ -94,9 +94,9 @@ export const TwoCenteredCode = ({
 				style={{
 					gridArea: 'textRight',
 					alignSelf: 'start',
-					margin: '0 0.31em',
+					margin: '0 1em',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFont(61.8),
+					fontSize: useConvert.sizeFont(68),
 			}}>
 				{aspects.textRight}
 			</div>
