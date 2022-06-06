@@ -9,8 +9,8 @@ export function seconds2frames(sec){
 export function framesUnclaimed(sec){
 	return useVideoConfig().durationInFrames - seconds2frames(sec)
 }
-export function frames2seconds(frames){
-	return frames / useVideoConfig().fps
+export function frames2seconds(frames, frameBump=0){
+	return (frames + frameBump) / useVideoConfig().fps
 }
 
 /* Space */

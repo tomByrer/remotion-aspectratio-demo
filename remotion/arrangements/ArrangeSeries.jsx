@@ -42,11 +42,12 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 
 				case 'FrameCount':
 					//MUST obtain frame count at top-level, before Sequence
-					aspects.codeLeft = useCurrentFrame().toFixed().padStart(aspects.digitCount,'_')
+					// 1-index since humans start counting at one ;)
+					aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(aspects.digitCount,'_')
 					const ROUNDOFF = 2
-					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame()).toFixed(ROUNDOFF).padStart(aspects.digitCount + ROUNDOFF,'_')
+					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(aspects.digitCount + ROUNDOFF,'_')
 					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
-					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames )
+					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
 
 					return(
 						<Sequence
