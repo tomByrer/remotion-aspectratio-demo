@@ -54,6 +54,7 @@ export const TwoCenteredCode = ({
 					margin: '0 0.31em',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
+					whiteSpace: 'pre-wrap',
 			}}>
 				{aspects.textTop}
 			</div>

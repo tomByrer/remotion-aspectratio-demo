@@ -1,13 +1,12 @@
 import { useCurrentFrame, useVideoConfig, Sequence, Series } from "remotion"
 import * as useConvert from '../helpers/useConvert'
-import { prep } from '../helpers/prep-transcript'
 
 // import {SimpleCenteredCode} from '../segments/SimpleCenteredCode'
 import {TwoCenteredCode} from '../segments/TwoCenteredCode'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
 
-export function ArrangeSeries({transcript, playerConfigStr}) {
+export function ArrangeSeries({transcript, }) {
 	const globalFrame = useCurrentFrame()
 
 	return (<>
@@ -16,7 +15,6 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 			const key = i + aspects.layout
 			switch(aspects.layout){
 				case 'IntroCode':
-					aspects.title = aspects.title.replace(/{{playerConfigStr}}/, playerConfigStr)
 					return(
 						<Sequence
 							from={aspects.timeSrtFrame}
@@ -41,6 +39,8 @@ export function ArrangeSeries({transcript, playerConfigStr}) {
 					break;
 
 				case 'FrameCount':
+					aspects.textTop = `w:${useVideoConfig().width} h:${useVideoConfig().height} fps:${useVideoConfig().fps}`
+
 					//MUST obtain frame count at top-level, before Sequence
 					// 1-index since humans start counting at one ;)
 					aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(aspects.digitCount,'_')

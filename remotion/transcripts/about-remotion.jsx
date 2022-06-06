@@ -2,14 +2,6 @@ export const transcriptAboutRemotion = [
 	{
 		layout: 'IntroCode',
 		timeDurSecs: 3.75,
-		title: '{{playerConfigStr}}',
-		fontVWRatio: 3.5,
-		colorBack: '#10131f',
-		colorFront: '#d9d0c6',
-	},
-	{
-		layout: 'IntroCode',
-		timeDurSecs: 3.75,
 		title: 'What would you create if you could...',
 		fontVWRatio: 3.5,
 		colorBack: '#10131f',
@@ -39,7 +31,7 @@ export const transcriptAboutRemotion = [
 	},
 	{
 		layout: 'ThreeRowsImgTitleSub',
-		timeDurSecs: 7.5,
+		timeDurSecs: 10,
 		transition: `<Logos.Remotion use='transition'/>`,
 		logo: `<Logos.Remotion />`,
 		logoAnimation: `<Slide.Lift />`,

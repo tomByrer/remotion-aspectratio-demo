@@ -313,7 +313,6 @@ export function Players({transcript, title}) {
 						component={ArrangeSeries}
 						inputProps={{
 							transcript: preparedTR.tr,
-							playerConfigStr: `aspectratio: ${arName}-${data.info.ratio} ${JSON.stringify(data.dimention)}`,
 						}}
 						fps={fps}
 						durationInFrames={durationInFrames}
