@@ -43,9 +43,12 @@ export function ArrangeSeries({transcript, }) {
 
 					//MUST obtain frame count at top-level, before Sequence
 					// 1-index since humans start counting at one ;)
-					aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(aspects.digitCount,'_')
+					const FRAME_DIGITS = String( useVideoConfig().durationInFrames ).length
+					const SEC_DIGITS = String( useConvert.frames2seconds( useVideoConfig().durationInFrames) ).length
+					console.log('fc', FRAME_DIGITS)
+					aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(FRAME_DIGITS , '_' )
 					const ROUNDOFF = 2
-					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(aspects.digitCount + ROUNDOFF,'_')
+					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(SEC_DIGITS + 3,'_')
 					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
 					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
 
