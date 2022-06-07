@@ -7,7 +7,6 @@ export function LogoReact({
 }) {
 	const videoConfig = useVideoConfig()
 	// when size = 540, fits a 360 perfectly
-// 	const fitD = Math.min(videoConfig.width, videoConfig.height)
 	const fitDimention = Math.min(videoConfig.height, videoConfig.width)
 	const fitHalf = fitDimention * 0.5
 	const frame = useCurrentFrame()
@@ -81,8 +80,6 @@ export function LogoReact({
 		)
 	}
 
-	const xLeft = -111 //assumes 540 fixed size
-	const yTop = -111
 	const xCenter = videoConfig.width * 0.5 - fitHalf
 	const yCenter = videoConfig.height * 0.5 - fitHalf
 	const scale = spring({
@@ -92,25 +89,12 @@ export function LogoReact({
 		},
 		fps: videoConfig.fps,
 	})
-	// const frameLimit = useConvert.seconds2frames(1.66666)
-	// const scale = (frame < frameLimit) ? scaleIn : 1
 	const logoRotation = interpolate(
 		frame,
 		[0, videoConfig.durationInFrames],
 		[0, 360]
 	)
 	return (
-		// <div className={use} style={{
-		// 	// position: 'absolute',
-		// 	// width: videoConfig.width,
-		// 	// height: videoConfig.height,
-		// 	transformOrigin: 'bottom center',
-		// 	transform: `scale(${useConvert.fitScaleHeight({
-		// 		srcH: fitDimention,
-		// 		targetH: videoConfig.height,
-		// 		targetW: videoConfig.width,
-		// 	})})`,
-		// }}>
 			<div style={{
 				position: 'absolute',
 				width: fitDimention,
@@ -119,11 +103,10 @@ export function LogoReact({
 				top: yCenter,
 				transform: `scale(${scale}) rotate(${logoRotation}deg)`,
 			}}>
+				<Atom />
 				<Arc rotation={30} />
 				<Arc rotation={90} />
 				<Arc rotation={-30} />
-				<Atom />
 			</div>
-		// </div>
 	)
 }

@@ -30,11 +30,13 @@ export function vmax(size=100, maxCeil=null){
 	return size * sizeMax(maxCeil) * 0.01
 }
 
-function sizeMin(minFloor){
-	return Math.min(useVideoConfig().height, useVideoConfig().width, minFloor ? minfloor : useVideoConfig().width)
+function sizeMin(){
+	//NOTE adding minFloor not sraight-forward
+	return Math.min(useVideoConfig().height, useVideoConfig().width)
+
 }
-export function vmin(size=100, minFloor=null){
-	return size * sizeMin(minFloor) * 0.01
+export function vmin(size=100){
+	return size * sizeMin() * 0.01
 }
 
 // export function diffMaxMin(size=1){
@@ -95,12 +97,11 @@ export function safeWidthGrow(w){
 	}
 }
 
-export function vHWResponsive(vHeight=100, vWidth=100, vMinimum=100, vMaximum=100){
-	return vh(vHeight) + vw(vWidth) + vmin(vMinimum) + vmax(vMaximum)
+export function vHWResponsive(vHeight=100, vWidth=100, vMaximum=100){
+	return vh(vHeight) + vw(vWidth) + vmax(vMaximum)
 }
 export function sizeFont(s=100){
-
-	return vHWResponsive(1/aspectRatio(), 0.062*s, 0.04*s, (0.01 + isSquare()*0.004)*s)
+	return vHWResponsive(1/aspectRatio(), 0.062*s, (0.01 + isSquare()*0.004)*s)
 }
 
 export function fitScaleHeight({
