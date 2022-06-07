@@ -31,7 +31,7 @@ export function vmax(size=100, maxCeil=null){
 }
 
 function sizeMin(minFloor){
-	return Math.min(useVideoConfig().height, useVideoConfig().width, minFloor)
+	return Math.min(useVideoConfig().height, useVideoConfig().width, minFloor ? minfloor : useVideoConfig().width)
 }
 export function vmin(size=100, minFloor=null){
 	return size * sizeMin(minFloor) * 0.01
