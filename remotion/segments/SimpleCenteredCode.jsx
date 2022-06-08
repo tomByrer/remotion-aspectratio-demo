@@ -13,7 +13,7 @@ export const SimpleCenteredCode = ({
 		placeItems: 'center',
 		textBottom: 'bottom',
 		textCenter: 'def code text',
-		textTop: 'top',
+		rowTop: 'top',
 		timeDurSecs: 2,
 	}
 }) => {
@@ -44,7 +44,7 @@ export const SimpleCenteredCode = ({
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
 			}}>
-				{aspects.textTop}
+				{aspects.rowTop}
 			</div>
 			<code
 				style={{

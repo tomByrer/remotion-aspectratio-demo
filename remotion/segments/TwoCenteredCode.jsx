@@ -9,7 +9,7 @@ export const TwoCenteredCode = ({
 		colorFrontCenter: null,
 		fontVWRatio: 9,
 		placeItems: 'center',
-		textTop: 'top',
+		rowTop: 'top',
 		codeLeft: 'left',
 		codeRight: 'right',
 		textLeft: 'text left',
@@ -40,9 +40,10 @@ export const TwoCenteredCode = ({
 			gap: "0 0",
 			gridAutoFlow: "row",
 			gridTemplateAreas:
-				`'textTop textTop'
+				`'rowTop rowTop'
 				'codeLeft codeRight'
-				'textLeft textRight'`,
+				'textLeft textRight'
+				'rowBottom rowBottom`,
 			gridAutoRows: '1fr',
 			placeItems: 'center',
 			textAlign: "center",
@@ -50,13 +51,13 @@ export const TwoCenteredCode = ({
 		}}>
 			<div
 				style={{
-					gridArea: 'textTop',
+					gridArea: 'rowTop',
 					margin: '0 0.31em',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFont(61.8),
 					whiteSpace: 'pre-wrap',
 			}}>
-				{aspects.textTop}
+				{aspects.rowTop}
 			</div>
 			<code
 				style={{
@@ -101,6 +102,15 @@ export const TwoCenteredCode = ({
 			}}>
 				{aspects.textRight}
 			</div>
+			<div
+				style={{
+					gridArea: 'rowBottom',
+					alignSelf: 'center',
+					margin: '0 1em',
+					fontSize: useConvert.sizeFont(68),
+				}}>
+					{aspects.rowBottom}
+				</div>
 		</div>
 	);
 };
