@@ -54,7 +54,7 @@ export const TwoCenteredCode = ({
 					gridArea: 'rowTop',
 					margin: '0 0.31em',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFont(61.8),
+					fontSize: useConvert.sizeFontHeader(61.8),
 					whiteSpace: 'pre-wrap',
 			}}>
 				{aspects.rowTop}
@@ -65,7 +65,7 @@ export const TwoCenteredCode = ({
 					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
-					fontSize: useConvert.sizeFont(100),
+					fontSize: useConvert.sizeFontHeader(100),
 				}}
 			>
 				{aspects.codeLeft}
@@ -76,7 +76,7 @@ export const TwoCenteredCode = ({
 					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
-					fontSize: useConvert.sizeFont(100),
+					fontSize: useConvert.sizeFontHeader(100),
 				}}
 			>
 				{aspects.codeRight}
@@ -88,7 +88,7 @@ export const TwoCenteredCode = ({
 					margin: '0 1em',
 					placeItems: 'start',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFont(68),
+					fontSize: useConvert.sizeFontHeader(68),
 			}}>
 				{aspects.textLeft}
 			</div>
@@ -98,7 +98,7 @@ export const TwoCenteredCode = ({
 					alignSelf: 'start',
 					margin: '0 1em',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFont(68),
+					fontSize: useConvert.sizeFontHeader(68),
 			}}>
 				{aspects.textRight}
 			</div>
@@ -107,7 +107,7 @@ export const TwoCenteredCode = ({
 					gridArea: 'rowBottom',
 					alignSelf: 'center',
 					margin: '0 1em',
-					fontSize: useConvert.sizeFont(68),
+					fontSize: useConvert.sizeFontHeader(68),
 				}}>
 					{aspects.rowBottom}
 				</div>

@@ -100,7 +100,10 @@ export function safeWidthGrow(w){
 export function vHWResponsive(vHeight=100, vWidth=100, vMaximum=100){
 	return vh(vHeight) + vw(vWidth) + vmax(vMaximum)
 }
-export function sizeFont(s=100){
+export function sizeFontSmall(s=100){
+	return vHWResponsive(1/aspectRatio(), 0.031*s, (0.02 + isSquare()*0.004)*s)
+}
+export function sizeFontHeader(s=100){
 	return vHWResponsive(1/aspectRatio(), 0.062*s, (0.01 + isSquare()*0.004)*s)
 }
 

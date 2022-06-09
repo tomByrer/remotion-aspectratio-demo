@@ -52,39 +52,47 @@ export function ArrangeSeries({transcript, }) {
 					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
 					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
 
-					/* ProgressBar */
-					// let done = useVideoConfig().durationInFrames / useCurrentFrame() +1
-					// let done = 40
-					const Progress = ({done}) => {
+
+					/* ProgressBar  csscodelab.com/custom-react-js-progress-bar/ */
+					const Progress = ({}) => {
+
+					let done =  (useCurrentFrame() +1) /  useVideoConfig().durationInFrames
+					const fontSize = useConvert.sizeFontSmall(69)
+					let widthBar = useConvert.vw(97) * done
+					done = done * 100
+					let doneFixed = done.toFixed()
+					console.log('PB', done, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
+					let isEnoughTextRoom = (doneFixed.length > 1) ? fontSize/widthBar < .43 :fontSize/widthBar < .52
 						return (
 							<div class="progress" style={{
-								backgroundColor: "#d8d8d8",
-								borderRadius: 20,
+								backgroundColor: "#d8d8d8aa",
+								borderRadius: 16,
 								position: "relative",
 								margin: "15 0",
-								height: 30,
-								width: 300,
+								height: useConvert.sizeFontSmall(88),
+								width: useConvert.vw(97),
 							}}>
+								{(!isEnoughTextRoom) ? <div style={{position:'fixed',margin:`${fontSize*0.05}px 0 auto ${done+1}%`,fontSize:`${fontSize}px`,lineHeight:`${fontSize+(fontSize*0.05)}px`,}}>{doneFixed +'%'}</div> : null}
 								<div class="progress-done" style={{
 									display: "flex",
-									alignItems: "center",
-									justifyContent: "center",
-									background: "linear-gradient(to left, #F2909C, #FF9472)",
+									alignItems: "end",
+									justifyContent: "end",
+									background: aspects.colorFront,
 									boxShadow: "0 3 3 -5 #F2909C, 0 2 5 #F2909C",
-									borderRadius: 20,
+									borderRadius: 16,
 									height: "100%",
 									width: `${done}%`,
 									color: "#fff",
 									opacity: 1,
 									transition: "2s ease",
-									fontSize: '0.62em',
+									fontSize: `${fontSize}px`,
 							}}>
-									{done}%
+									{(isEnoughTextRoom) ? <div style={{margin:'0 9px 0 0'}}>{doneFixed +'%'}</div> : null}
 								</div>
 							</div>
 						)
 					};
-					aspects.rowBottom = <Progress done={40}/>
+					aspects.rowBottom = <Progress />
 
 					return(
 						<Sequence
