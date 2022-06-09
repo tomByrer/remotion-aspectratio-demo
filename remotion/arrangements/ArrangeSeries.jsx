@@ -66,25 +66,32 @@ export function ArrangeSeries({transcript, }) {
 						return (
 							<div class="progress" style={{
 								backgroundColor: "#d8d8d8aa",
-								borderRadius: 16,
+								borderRadius: fontSize,
 								position: "relative",
 								margin: "15 0",
 								height: useConvert.sizeFontSmall(88),
 								width: useConvert.vw(97),
 							}}>
-								{(!isEnoughTextRoom) ? <div style={{position:'fixed',margin:`${fontSize*0.05}px 0 auto ${done+1}%`,fontSize:`${fontSize}px`,lineHeight:`${fontSize+(fontSize*0.05)}px`,}}>{doneFixed +'%'}</div> : null}
+								{(!isEnoughTextRoom)
+									? <div class="progress-right" style={{
+											position:'fixed',
+											margin:`-${fontSize*0.09}px 0 0 ${done+1}%`,
+											fontSize:`${fontSize}px`,
+										}}>
+											{doneFixed +'%'}
+										</div>
+									: null
+								}
 								<div class="progress-done" style={{
 									display: "flex",
 									alignItems: "end",
 									justifyContent: "end",
 									background: aspects.colorFront,
-									boxShadow: "0 3 3 -5 #F2909C, 0 2 5 #F2909C",
-									borderRadius: 16,
+									borderRadius: fontSize,
 									height: "100%",
 									width: `${done}%`,
 									color: "#fff",
 									opacity: 1,
-									transition: "2s ease",
 									fontSize: `${fontSize}px`,
 							}}>
 									{(isEnoughTextRoom) ? <div style={{margin:'0 9px 0 0'}}>{doneFixed +'%'}</div> : null}
