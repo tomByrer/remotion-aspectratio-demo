@@ -9,6 +9,7 @@ export const aRs = {
 			float: 2.388888888,
 		},
 		sizes: {
+			'wqhdFifth': {w:688, h:288},
 			'wqhdQuarter': {w:860, h:360},
 			'ultrawideSmall': {w:1720, h:720},
 			'wqhd': {w:3440, h:1440},
@@ -48,6 +49,8 @@ export const aRs = {
 		},
 		sizes: {
 			'qvga': {w:320, h:240},
+			'300w': {w:400, h:300},
+			'360w': {w:480, h:360},
 			'vga': {w:640, h:480},
 			'svga': {w:800, h:600},
 			'xga': {w:1024, h:768},
@@ -61,6 +64,8 @@ export const aRs = {
 			float: 1,
 		},
 		sizes: {
+			'square360': {w:360, h:360},
+			'square480': {w:480, h:480},
 			'square480': {w:480, h:480},
 			'squareHalf': {w:540, h:540},
 			'squareTictok': {w:640, h:640},
@@ -75,6 +80,7 @@ export const aRs = {
 			float: 0.8,
 		},
 		sizes: {
+			'feed360': {w:360, h:450},
 			'feed480': {w:480, h:600},
 			'feedHalf': {w:540, h:675},
 			'feed': {w:1080, h:1350},
@@ -87,6 +93,7 @@ export const aRs = {
 			float: 0.5625,
 		},
 		sizes: {
+			'story360': {w:360, h:640},
 			'story480': {w:480, h:854},
 			'storyTwitter': {w:720, h:1280},
 			'story': {w:1080, h:1920},
@@ -127,6 +134,20 @@ export const presets = {
 		fps: fps.default,
 		player: {
 			speed: 1,
+		},
+	},
+	SMALL: {
+		vidSizes: {
+			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360']},
+			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['360p']},
+			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed360']},
+			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['story360']},
+			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['360w']},
+			ultrawide: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
+		},
+		fps: fps.slow,
+		player: {
+			speed: 1.5,
 		},
 	},
 }

@@ -1,1 +1,1 @@
-export const MODE = "DEVELOP" // or production
+export const MODE = "SMALL" // or production
