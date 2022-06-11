@@ -55,14 +55,13 @@ export function ArrangeSeries({transcript, }) {
 
 					/* ProgressBar  csscodelab.com/custom-react-js-progress-bar/ */
 					const Progress = ({}) => {
-
-					let donePercent =  (useCurrentFrame() +1) /  useVideoConfig().durationInFrames
-					const fontSize = useConvert.sizeFontSmall(69)
-					let widthBar = useConvert.vw(97) * donePercent
-					donePercent = donePercent * 100
-					let doneFixed = donePercent.toFixed()
-					console.log('PB', donePercent, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
-					let isEnoughTextRoom = fontSize/widthBar < .39
+						let doneFraction =  (useCurrentFrame() +1) / useVideoConfig().durationInFrames
+						const fontSize = useConvert.sizeFontSmall(69)
+						const widthBar = fontSize / useConvert.vw(97)
+						let isEnoughTextRoom = widthBar / doneFraction < .39
+						let donePercent = doneFraction * 100
+						console.log('PB', donePercent, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
+						let doneFixed = donePercent.toFixed()
 
 						return (
 							<div class="progress" style={{
