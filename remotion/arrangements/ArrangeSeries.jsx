@@ -39,6 +39,13 @@ export function ArrangeSeries({transcript, }) {
 					break;
 
 				case 'FrameCount':
+					function formatNumberLeading(number=1, intergerDigits=3, fractionDigits=0, placeholder='0'){
+						let num = number.toFixed(fractionDigits)
+						// const numIntLen = number.toFixed().length  bug:loses if rounding up
+						const numIntLen = String(num | 0).length
+						return <><span style={{opacity:0.382}}>{placeholder.repeat(intergerDigits - numIntLen)}</span>{num}</>
+					}
+
 					aspects.rowTop = `w:${useVideoConfig().width} h:${useVideoConfig().height} fps:${useVideoConfig().fps}`
 
 					//MUST obtain frame count at top-level, before Sequence
@@ -46,9 +53,11 @@ export function ArrangeSeries({transcript, }) {
 					const FRAME_DIGITS = String( useVideoConfig().durationInFrames ).length
 					const SEC_DIGITS = String( useConvert.frames2seconds( useVideoConfig().durationInFrames) ).length
 					// console.log('fc', FRAME_DIGITS)
-					aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(FRAME_DIGITS , '_' )
+					// aspects.codeLeft = Number( useCurrentFrame() +1 ).toFixed().padStart(FRAME_DIGITS , '_' )
+					aspects.codeLeft = formatNumberLeading( useCurrentFrame() +1, FRAME_DIGITS, 0, '_' )
 					const ROUNDOFF = 2
-					aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(SEC_DIGITS + 3,'_')
+					// aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(SEC_DIGITS + 3,'_')
+					aspects.codeRight = formatNumberLeading( useConvert.frames2seconds(useCurrentFrame(),+1), SEC_DIGITS, ROUNDOFF, '_' )
 					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
 					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
 
@@ -61,7 +70,6 @@ export function ArrangeSeries({transcript, }) {
 						let isEnoughTextRoom = widthBar / doneFraction < .29
 						// let isEnoughTextRoom = doneFraction > .5
 						console.log('PB', doneFraction, useConvert.vw(), widthBar, fontSize, widthBar / doneFraction)
-
 
 						let donePercent = doneFraction * 100
 						let doneFixed = donePercent.toFixed()
