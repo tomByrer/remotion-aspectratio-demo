@@ -58,9 +58,12 @@ export function ArrangeSeries({transcript, }) {
 						let doneFraction =  (useCurrentFrame() +1) / useVideoConfig().durationInFrames
 						const fontSize = useConvert.sizeFontSmall(69)
 						const widthBar = fontSize / useConvert.vw(97)
-						let isEnoughTextRoom = widthBar / doneFraction < .39
+						let isEnoughTextRoom = widthBar / doneFraction < .29
+						// let isEnoughTextRoom = doneFraction > .5
+						console.log('PB', doneFraction, useConvert.vw(), widthBar, fontSize, widthBar / doneFraction)
+
+
 						let donePercent = doneFraction * 100
-						console.log('PB', donePercent, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
 						let doneFixed = donePercent.toFixed()
 
 						return (
@@ -94,7 +97,7 @@ export function ArrangeSeries({transcript, }) {
 									opacity: 1,
 									fontSize: `${fontSize}px`,
 							}}>
-									{(isEnoughTextRoom) ? <div style={{margin:'0 9px 0 0'}}>{doneFixed +'%'}</div> : null}
+									{(isEnoughTextRoom) ? <div style={{margin:`0 ${fontSize*.8}px 0 0`}}>{doneFixed +'%'}</div> : null}
 								</div>
 							</div>
 						)
