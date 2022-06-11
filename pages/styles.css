@@ -49,11 +49,10 @@ a:active {
 }
 
 .player h6 {
-	margin: 0.162em 0;
-	font-size: 1.162em;
+	margin: 0.11em 0 0.16em 25px;
+	font-size: 1.1em;
 	color: #000;
 
-	margin-left: 27px;
 	transform-origin: -33px 4px;
 	transform: rotate(90deg);
 }

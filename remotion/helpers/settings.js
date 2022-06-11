@@ -59,7 +59,7 @@ export const aRs = {
 	},
 	'1:1': {
 		info: {
-			about: 'semi-universal soical media',
+			about: 'mixed-use soical media',
 			ratio: '1/1',
 			float: 1,
 		},
@@ -88,7 +88,7 @@ export const aRs = {
 	},
 	'9:16': {
 		info: {
-			about: 'TicTok, common Instagram',
+			about: 'TicTok, Instagram',
 			ratio: '9/16',
 			float: 0.5625,
 		},
