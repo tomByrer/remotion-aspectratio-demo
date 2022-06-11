@@ -56,16 +56,17 @@ export function ArrangeSeries({transcript, }) {
 					/* ProgressBar  csscodelab.com/custom-react-js-progress-bar/ */
 					const Progress = ({}) => {
 
-					let done =  (useCurrentFrame() +1) /  useVideoConfig().durationInFrames
+					let donePercent =  (useCurrentFrame() +1) /  useVideoConfig().durationInFrames
 					const fontSize = useConvert.sizeFontSmall(69)
-					let widthBar = useConvert.vw(97) * done
-					done = done * 100
-					let doneFixed = done.toFixed()
-					console.log('PB', done, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
-					let isEnoughTextRoom = (doneFixed.length > 1) ? fontSize/widthBar < .43 :fontSize/widthBar < .52
+					let widthBar = useConvert.vw(97) * donePercent
+					donePercent = donePercent * 100
+					let doneFixed = donePercent.toFixed()
+					console.log('PB', donePercent, useConvert.vw(), widthBar, fontSize, fontSize/widthBar)
+					let isEnoughTextRoom = fontSize/widthBar < .39
+
 						return (
 							<div class="progress" style={{
-								backgroundColor: "#d8d8d8aa",
+								backgroundColor: "#d8d8d89f",
 								borderRadius: fontSize,
 								position: "relative",
 								margin: "15 0",
@@ -75,21 +76,21 @@ export function ArrangeSeries({transcript, }) {
 								{(!isEnoughTextRoom)
 									? <div class="progress-right" style={{
 											position:'fixed',
-											margin:`-${fontSize*0.09}px 0 0 ${done+1}%`,
+											margin:`-${fontSize*0.09}px 0 0 ${donePercent+1}%`,
 											fontSize:`${fontSize}px`,
 										}}>
 											{doneFixed +'%'}
 										</div>
 									: null
 								}
-								<div class="progress-done" style={{
+								<div class="progress-donePercent" style={{
 									display: "flex",
 									alignItems: "end",
 									justifyContent: "end",
 									background: aspects.colorFront,
 									borderRadius: fontSize,
 									height: "100%",
-									width: `${done}%`,
+									width: `${donePercent}%`,
 									color: "#fff",
 									opacity: 1,
 									fontSize: `${fontSize}px`,
