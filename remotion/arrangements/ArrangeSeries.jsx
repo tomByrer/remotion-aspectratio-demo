@@ -39,14 +39,16 @@ export function ArrangeSeries({transcript, }) {
 					break;
 
 				case 'FrameCount':
+					const FADED_TEXT = 0.382
 					function formatNumberLeading(number=1, intergerDigits=3, fractionDigits=0, placeholder='0'){
 						let num = number.toFixed(fractionDigits)
 						// const numIntLen = number.toFixed().length  bug:loses if rounding up
 						const numIntLen = String(num | 0).length
-						return <><span style={{opacity:0.382}}>{placeholder.repeat(intergerDigits - numIntLen)}</span>{num}</>
+						return <><span style={{opacity:FADED_TEXT}}>{placeholder.repeat(intergerDigits - numIntLen)}</span>{num}</>
 					}
 
-					aspects.rowTop = `w:${useVideoConfig().width} h:${useVideoConfig().height} fps:${useVideoConfig().fps}`
+					// aspects.rowTop = `w:${useVideoConfig().width} h:${useVideoConfig().height} fps:${useVideoConfig().fps}`
+					aspects.rowTop = <span style={{opacity:FADED_TEXT}}>w:{useVideoConfig().width} h:{useVideoConfig().height} fps:{useVideoConfig().fps}</span>
 
 					//MUST obtain frame count at top-level, before Sequence
 					// 1-index since humans start counting at one ;)
@@ -58,8 +60,11 @@ export function ArrangeSeries({transcript, }) {
 					const ROUNDOFF = 2
 					// aspects.codeRight = useConvert.frames2seconds(useCurrentFrame(), +1).toFixed(ROUNDOFF).padStart(SEC_DIGITS + 3,'_')
 					aspects.codeRight = formatNumberLeading( useConvert.frames2seconds(useCurrentFrame(),+1), SEC_DIGITS, ROUNDOFF, '_' )
-					aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
-					aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
+					// aspects.textLeft = `frames of `+ useVideoConfig().durationInFrames
+					aspects.textLeft = <span style={{opacity:FADED_TEXT}}>frames of {useVideoConfig().durationInFrames}</span>
+					// aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
+					// aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
+					aspects.textRight = <span style={{opacity:FADED_TEXT}}>seconds of {useConvert.frames2seconds( useVideoConfig().durationInFrames)}</span>
 
 
 					/* ProgressBar  csscodelab.com/custom-react-js-progress-bar/ */
