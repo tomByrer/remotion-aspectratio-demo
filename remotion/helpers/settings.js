@@ -4,9 +4,10 @@ export const COLOR_2 = '#91EAE4';
 export const aRs = {
 	'43:18': {
 		info: {
-			about: 'ultrawide',
+			about: 'widescreen',
 			ratio: '43/18',
 			float: 2.388888888,
+			uses: "modern cinema widescreen"
 		},
 		sizes: {
 			'wqhdFifth': {w:688, h:288},
@@ -18,7 +19,7 @@ export const aRs = {
 	'64:27': {
 		info: {
 			about: 'ultrawide',
-			ratio: '64/20',
+			ratio: '64/27',
 			float: 2.388888888,
 			uses: 'Dashcam, Anamorphic 1.33x on 4:3'
 		},
@@ -115,7 +116,7 @@ export const presets = {
 			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed480']},
 			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['story480']},
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['vga']},
-			ultrawide: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdQuarter']},
+			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdQuarter']},
 		},
 		fps: fps.slow,
 		player: {
@@ -129,7 +130,7 @@ export const presets = {
 			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed']},
 			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['storyTwitter']},
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['xga']},
-			ultrawide: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['ultrawideSmall']},
+			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['ultrawideSmall']},
 		},
 		fps: fps.default,
 		player: {
@@ -143,7 +144,7 @@ export const presets = {
 			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed360']},
 			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['story360']},
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['360w']},
-			ultrawide: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
+			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
 		},
 		fps: fps.slow,
 		player: {
