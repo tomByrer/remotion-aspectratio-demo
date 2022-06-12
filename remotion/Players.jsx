@@ -75,6 +75,11 @@ export function Players({transcript, title}) {
 		addLog('setPlaybackRate: '+ n)
 		setPlaybackRate(n)
 	}
+	function seekSecondsPlay(n){
+		addLog('seekSecondPlay: '+ n)
+		runController(`seekTo(${fps * n})`)
+		runController(`play()`)
+	}
 
 	function shuffleObject(obj){
 		let newObj = {}
@@ -189,8 +194,8 @@ export function Players({transcript, title}) {
 						<button type="button" onClick={()=> runController(`seekTo(50)`)}>
 							seekTo 50
 						</button>
-						<button type="button" onClick={()=> runController(`seekTo(200)`)}>
-							seekTo 200
+						<button type="button" onClick={()=> seekSecondsPlay(3)}>
+							play 3sec mark
 						</button>
 					</span>
 					<span>

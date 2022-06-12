@@ -15,7 +15,7 @@ import { transcriptAboutRemotion } from '../remotion/transcripts/about-remotion'
 import { transcriptTimeTest } from '../remotion/transcripts/time-test'
 
 export default function Home() {
-	const [showAbout, setShowAbout] = useState(false)
+	const [showAbout, setShowAbout] = useState(true)
 	const [showTimeTest, setShowTimeTest] = useState(true)
 	function loadTranscript(t){
 		console.log('load', t)
@@ -37,6 +37,8 @@ export default function Home() {
 				</h1>
 				<p className="description">
 					Please help by leaving <a href="https://github.com/tomByrer/remotion-aspectratio-demo/" target="_blank">&#11088; stars & issues on GitHub</a>.
+					<br />
+					Caution: this is my playground, so things may change anytime.
 				</p>
 				<h2 className="title">
 					Film toggles:
