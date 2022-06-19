@@ -43,3 +43,9 @@ https://github.com/thierryc/Next-gh-page-example/
 
 https://thierryc.github.io/Next-gh-page-example/
 ```
+
+## TODO
+
+[ ] FPS in presets
+[ ] NicePlayer
+ - format

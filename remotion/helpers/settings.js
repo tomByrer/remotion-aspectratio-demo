@@ -103,13 +103,16 @@ export const aRs = {
 }
 
 export const fps = {
-	slow: 15,
+	min: 16,  //silent film
+	talk: 24,
 	default: 30,
 	highSpeed: 60,
 }
 
 export const presets = {
+	//TODO individual fps per preset; some media hosts cap at 30
 	DEVELOP: {
+		fps: fps.talk,
 		vidSizes: {
 			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square480']},
 			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['480p']},
@@ -118,12 +121,12 @@ export const presets = {
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['vga']},
 			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdQuarter']},
 		},
-		fps: fps.slow,
 		player: {
 			speed: 1.5,
 		},
 	},
 	PRODUCTION: {
+		fps: fps.default,
 		vidSizes: {
 			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['squareTwitter']},
 			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['1080p']},
@@ -132,12 +135,12 @@ export const presets = {
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['xga']},
 			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['ultrawideSmall']},
 		},
-		fps: fps.default,
 		player: {
 			speed: 1,
 		},
 	},
 	SMALL: {
+		fps: fps.min,
 		vidSizes: {
 			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360']},
 			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['360p']},
@@ -146,9 +149,18 @@ export const presets = {
 			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['360w']},
 			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
 		},
-		fps: fps.slow,
 		player: {
 			speed: 1.5,
 		},
 	},
+	// SPEEDS: {
+	// 	vidSizes: {
+	// 		square16: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360'], fps: 16},
+	// 		square30: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360'], fps: 30},
+	// 		square60: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360'], fps: 60},
+	// 	},
+	// 	player: {
+	// 		speed: 1.5,
+	// 	},
+	// },
 }

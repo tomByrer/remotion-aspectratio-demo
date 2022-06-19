@@ -10,11 +10,13 @@ export const transcriptTimeTest = [
 	{
 		layout: 'FrameCount',
 		timeSrtSec: 0,
-		timeEndSec: 9,
+		timeEndSec: 10,
+		// codeLeft: 'curFrame',
+		// codeRight: 'curSecond',
 		placeItems: 'center',
 		digitCount: 3, //TODO: change this & fontVWRatio together
 		fontVWRatio: 44,
-		colorBack: 'linen',
+		colorBack: 'hsl(27,65%,97%)',
 		colorFront: 'darkorange',
 	},
 ]

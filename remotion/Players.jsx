@@ -310,23 +310,22 @@ export function Players({transcript, title}) {
 			{ Object.entries(aspectratios).map( ([arName, data],i)=>
 				<div className='player' key={'playerdiv'+ i + arName}>
 					<h6 style={{
-						opacity: (isHovering ? 1 : 0.323),
+						opacity: (isHovering ? 1 : 0.32),
 					}}>
 						{data.info.ratio +' ~ '+ data.info.about}
 					</h6>
 					<Player
-						component={ArrangeSeries}
+						component={ArrangeSeries} //default
 						inputProps={{
 							transcript: preparedTR.tr,
 						}}
-						fps={fps}
 						durationInFrames={durationInFrames}
+						key={'remotion'+ i + arName}
+						ref={playersRefs[arName]}
 						compositionWidth={data.dimention.w}
 						compositionHeight={data.dimention.h}
-						key={'remotion'+ i + arName}
+						fps={fps}
 						playbackRate={playbackRate}
-						ref={playersRefs[arName]}
-						// controls
 						style={{
 							outline: `0.16rem dashed #777`,
 						}}
