@@ -32,6 +32,7 @@ export const CompositionCollection = () => {
 			/>
 
 			<NiceComposition
+				id='TitleOutlined-360x360-16fps'
 				component={TitleOutlined}
 				defaultProps={{
 					displayText: 'NiceComposition Test Text',
