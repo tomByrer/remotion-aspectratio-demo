@@ -1,7 +1,10 @@
+export const info = {
+	about: `Mini "Advertisement" for Remotion`,
+	credits: `Tom Byrer, based on Remotion & React logos by Johnny Burger.`
+}
 const colors = {
 	back: '#39ff14'
 }
-
 export const transcriptShortRemotion = [
 	{
 		layout: 'IntroCode',
@@ -21,6 +24,6 @@ export const transcriptShortRemotion = [
 		title: 'You can with Remotion!',
 		subtitle: 'Create videos programmatically in React.',
 		colorBack: colors.back,
-		colorFront: '#39ff14',
+		colorFront: colors.back,
 	},
 ]

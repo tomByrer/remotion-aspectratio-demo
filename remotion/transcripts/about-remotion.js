@@ -1,3 +1,7 @@
+export const info = {
+	about: `"Advertisement" for Remotion`,
+	credits: `Tom Byrer, based on Remotion & React logos by Johnny Burger.`
+}
 export const transcriptAboutRemotion = [
 	{
 		layout: 'IntroCode',

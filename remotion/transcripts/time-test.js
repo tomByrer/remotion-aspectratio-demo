@@ -1,12 +1,8 @@
+export const info = {
+	about: `Framecount TEST file`,
+	credits: `Tom Byrer`
+}
 export const transcriptTimeTest = [
-	// {
-	// 	layout: 'IntroCode',
-	// 	timeSrtSec: 0,
-	// 	title: '{{playerConfigStr}}',
-	// 	fontVWRatio: 3.5,
-	// 	colorBack: '#738678',
-	// 	colorFront: '#e6eae7',
-	// },
 	{
 		layout: 'FrameCount',
 		timeSrtSec: 0,
