@@ -307,12 +307,12 @@ export function Players({transcript, title}) {
     </div>
 		</>}
 
-			{ Object.entries(aspectratios).map( ([arName, data],i)=>
+			{ Object.entries(aspectratios).map( ([arName, vidSize],i)=>
 				<div className='player' key={'playerdiv'+ i + arName}>
 					<h6 style={{
 						opacity: (isHovering ? 1 : 0.32),
 					}}>
-						{data.info.ratio +' ~ '+ data.info.about}
+						{vidSize.info.ratio +' ~ '+ vidSize.info.about}
 					</h6>
 					<Player
 						component={ArrangeSeries} //default
@@ -322,8 +322,8 @@ export function Players({transcript, title}) {
 						durationInFrames={durationInFrames}
 						key={'remotion'+ i + arName}
 						ref={playersRefs[arName]}
-						compositionWidth={data.dimention.w}
-						compositionHeight={data.dimention.h}
+						compositionWidth={vidSize.dimention.w}
+						compositionHeight={vidSize.dimention.h}
 						fps={fps}
 						playbackRate={playbackRate}
 						style={{
