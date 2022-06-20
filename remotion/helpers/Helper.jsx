@@ -5,21 +5,22 @@ import {MODE} from '../../CONFIG'
 
 export function NiceComposition({
 	component,
-	fps=30,
+	preset,
 	durationInSeconds=5,
-	durationInFrames=durationInSeconds*fps,
-	resolution='ar16_9',
-	width=(presets[MODE][resolution],w) || 1920,
-	height=(presets[MODE][resolution],h) || 1080,
-	defaultProps={},
-	id=`${component.name}-${width}x${height}-${fps}fps`,
+	durationInFrames=durationInSeconds*preset.fps,
+	vidKey='square',
+	vidSize = preset.vidSizes[vidKey],
+	width=(vidSize.dimention.w) || 1920,
+	height=(vidSize.dimention.h) || 1080,
+	defaultProps=defaultProps??{},
+	id=`${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
 	return (
 		<Composition
 			id={id}
 			component={component}
-			fps={fps}
 			durationInFrames={durationInFrames}
+			fps={preset.fps}
 			width={width}
 			height={height}
 			defaultProps={defaultProps}

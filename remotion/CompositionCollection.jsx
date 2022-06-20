@@ -1,19 +1,20 @@
 import {Composition} from 'remotion';
 
-import { ObjComposition } from './Helpers';
+import * as settings from "./helpers/settings"
+import { prep } from './helpers/prep-transcript'
+import { ArrangeSeries } from "./arrangements/ArrangeSeries"
+import { NiceComposition } from './helpers/Helper'
 import {HelloWorld} from './HelloWorld';
 import {Logo} from './HelloWorld/Logo';
 import {Subtitle} from './HelloWorld/Subtitle';
 import { TitleOutlined } from './parts/TitleOutlined'
-import * as settings from "./helpers/settings"
-import { prep } from './helpers/prep-transcript'
-import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 
 import { transcriptTimeTest } from '../remotion/transcripts/time-test'
 
 export const CompositionCollection = () => {
 	let preset = settings.presets.SMALL
-	let vidSize = preset.vidSizes.square
+	let vidKey = 'square'
+	let vidSize = preset.vidSizes[vidKey]
 	let preparedTR = prep(transcriptTimeTest)
 	return (
 		<>
@@ -23,12 +24,24 @@ export const CompositionCollection = () => {
 				durationInFrames={30}
 				fps={preset.fps}
 				width={vidSize.dimention.w}
-				height={vidSize.dimention.w}
+				height={vidSize.dimention.h}
 				defaultProps={{
 					displayText: 'Preset Test Text',
-					style: {color: 'darkgreen'},
+					style: {color: 'orange'},
 				}}
 			/>
+
+			<NiceComposition
+				component={TitleOutlined}
+				defaultProps={{
+					displayText: 'NiceComposition Test Text',
+					style: {color: 'darkred'},
+				}}
+				durationInSeconds={3}
+				preset={settings.presets.SMALL}
+				vidKey='square'
+			/>
+
 			{/* <Composition
 				id="TitleOutlined"
 				component={ArrangeSeries}
