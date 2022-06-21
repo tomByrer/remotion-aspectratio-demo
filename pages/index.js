@@ -43,23 +43,23 @@ export default function Home() {
 				<h2 className="title">
 					Film toggles:
 					<button type="button"	onClick={()=> setShowAbout(!showAbout)}>
-						{ showAbout ? 'Hide 📕' : 'Show 📖' } 'Short Remotion Promo'
+						{ showAbout ? 'Hide 📕' : 'Show 📖' } {about_remotion.info.title}
 					</button>
 					<button type="button"	onClick={()=> setShowTimeTest(!showTimeTest)}>
-						{ showTimeTest ? 'Hide 📕' : 'Show 📖' } 'Time/Frame Test'
+						{ showTimeTest ? 'Hide 📕' : 'Show 📖' } {time_test.info.title}
 					</button>
 				</h2>
 
 				{ showAbout
-					? <Players title='About Remotion Demo' transcript={about_remotion}/>
+					? <Players title={about_remotion.info.title} transcript={about_remotion}/>
 					: <h2 className="title">
-					🛑 'Short Remotion Promo' is hidden
+					🛑 {about_remotion.info.title} is hidden
 				</h2>
 				}
 				{ showTimeTest
-					? <Players title='Time/Frame Test' transcript={time_test}/>
+					? <Players title={time_test.info.title} transcript={time_test}/>
 					: <h2 className="title">
-					🛑 'Time/Frame Test' is hidden
+					🛑 {time_test.info.title} is hidden
 				</h2>
 				}
 			</main>

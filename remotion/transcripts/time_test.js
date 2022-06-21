@@ -1,6 +1,7 @@
 export const info = {
-	about: `Framecount TEST file`,
-	credits: `Tom Byrer`
+	title: `Time/Framecount Test`,
+	credits: `Tom Byrer`,
+	v: 0.5,
 }
 export const config = {
 	preset: 'SMALL',

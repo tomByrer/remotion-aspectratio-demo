@@ -1,5 +1,5 @@
 export const info = {
-	title: `IntroCode TEST`,
+	title: `IntroCode-TEST`,
 	credits: `Tom Byrer`,
 	v: 0.0,
 }

@@ -1,6 +1,7 @@
 export const info = {
-	about: `Mini "Advertisement" for Remotion`,
-	credits: `Tom Byrer, based on Remotion & React logos by Johnny Burger.`
+	title: `Mini "Advertisement" for Remotion`,
+	credits: `Tom Byrer, based on Remotion & React logo by Johnny Burger.`,
+	v: 0.5,
 }
 export const config = {
 	preset: 'SMALL',
