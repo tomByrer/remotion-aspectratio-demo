@@ -2,7 +2,12 @@ export const info = {
 	about: `Framecount TEST file`,
 	credits: `Tom Byrer`
 }
-export const transcriptTimeTest = [
+export const config = {
+	preset: 'SMALL',
+	aspectratios: ['square'],
+}
+
+export const sequence = [
 	{
 		layout: 'FrameCount',
 		timeSrtSec: 0,

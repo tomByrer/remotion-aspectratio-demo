@@ -20,11 +20,11 @@ export function Players({transcript, title}) {
 	// transcript data
 	const [valTextarea, setValTextarea] = useState(transcript)
 	const [preparedTR, setPreparedTR] = useState( prep(valTextarea) )
-	const [durationInFrames, setDurationInFrames]= useState(preparedTR.tr.at(-1).timeEndFrame)
+	const [durationInFrames, setDurationInFrames]= useState(preparedTR.sequence.at(-1).timeEndFrame)
 	useEffect(()=>{
 		setPreparedTR( prep(valTextarea) )
-		setDurationInFrames( preparedTR.tr.at(-1).timeEndFrame ) //COMPAT ES2021, Node16.6
-		// console.log('preparedTR', preparedTR.tr)
+		setDurationInFrames( preparedTR.sequence.at(-1).timeEndFrame ) //COMPAT ES2021, Node16.6
+		// console.log('preparedTR', preparedTR.sequence)
 	}, valTextarea)
 
 	// player convig
@@ -317,7 +317,7 @@ export function Players({transcript, title}) {
 					<Player
 						component={ArrangeSeries} //default
 						inputProps={{
-							transcript: preparedTR.tr,
+							transcript: preparedTR.sequence,
 						}}
 						durationInFrames={durationInFrames}
 						key={'remotion'+ i + arName}

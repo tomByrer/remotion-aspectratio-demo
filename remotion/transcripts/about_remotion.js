@@ -2,10 +2,20 @@ export const info = {
 	about: `"Advertisement" for Remotion`,
 	credits: `Tom Byrer, based on Remotion & React logos by Johnny Burger.`
 }
-export const transcriptAboutRemotion = [
+export const config = {
+	preset: 'SMALL',
+	aspectratios: ['square'],
+}
+
+const data = {
+	colors: {
+		back: '#213099',
+	},
+}
+export const sequence = [
 	{
 		layout: 'IntroCode',
-		timeDurSecs: 3.75,
+		timeDurSecs: 4,
 		title: 'What would you create if you could...',
 		fontVWRatio: 3.5,
 		colorBack: '#10131f',
@@ -13,7 +23,7 @@ export const transcriptAboutRemotion = [
 	},
 	{
 		layout: 'ThreeRowsImgTitleSub',
-		timeDurSecs: 7.5,
+		timeDurSecs: 8,
 		logo: `<Logos.React />`,
 		logoAnimation: `<Slide.SunriseRight />`,
 		animatedLogo: `<Slide.SunriseRight><Logos.React /></Slide.SunriseRight>`,
@@ -24,13 +34,13 @@ export const transcriptAboutRemotion = [
 	},
 	{
 		layout: 'ThreeRowsImgTitleSub',
-		timeDurSecs: 7.5,
+		timeDurSecs: 8,
 		logo: `<Logos.MovieCamera />`,
 		logoAnimation: `<Slide.Right pcLeftStart={-81} />`,
 		animatedLogo: `<Slide.Right pcLeftStart={-81}><Logos.MovieCamera /></Slide.Right>`,
 		title: 'then capture them as a movie...',
 		subtitle: 'Export a MP4 file or use the <Player>.',
-		colorBack: '#21304c',
+		colorBack: data.colors.back,
 		colorFront: '#d7d9df',
 	},
 	{
@@ -42,7 +52,7 @@ export const transcriptAboutRemotion = [
 		animatedLogo: `<Logos.Remotion use='transition'/><Slide.Lift><Logos.Remotion /></Slide.Lift>`,
 		title: 'with Remotion!',
 		subtitle: 'Create videos programmatically in React.',
-		colorBack: '#21304c',
-		colorFront: '#21304c',
+		colorBack: data.colors.back,
+		colorFront: data.colors.back,
 	},
 ]

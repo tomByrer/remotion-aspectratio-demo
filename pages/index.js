@@ -11,8 +11,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Players } from '../remotion/Players'
 
-import { transcriptAboutRemotion } from '../remotion/transcripts/about-remotion'
-import { transcriptTimeTest } from '../remotion/transcripts/time-test'
+import * as about_remotion from '../remotion/transcripts/about_remotion'
+import * as time_test from '../remotion/transcripts/time_test'
 
 export default function Home() {
 	const [showAbout, setShowAbout] = useState(true)
@@ -51,13 +51,13 @@ export default function Home() {
 				</h2>
 
 				{ showAbout
-					? <Players title='About Remotion Demo' transcript={transcriptAboutRemotion}/>
+					? <Players title='About Remotion Demo' transcript={about_remotion}/>
 					: <h2 className="title">
 					🛑 'Short Remotion Promo' is hidden
 				</h2>
 				}
 				{ showTimeTest
-					? <Players title='Time/Frame Test' transcript={transcriptTimeTest}/>
+					? <Players title='Time/Frame Test' transcript={time_test}/>
 					: <h2 className="title">
 					🛑 'Time/Frame Test' is hidden
 				</h2>
