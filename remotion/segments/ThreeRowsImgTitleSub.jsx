@@ -33,7 +33,7 @@ export function ThreeRowsImgTitleSub({
 		<H.NiceSequence startSeconds={aspects.timeDurSecs * 0.1618} style={{
 			// justifySelf: 'baseline',
 		}}>
-			<Title displayText={aspects.title} style={{
+			<Title title={aspects.title} style={{
 				gridRow: '2',
 				margin: '0 0.5em',
 				color: aspects.colorFront,
@@ -43,7 +43,7 @@ export function ThreeRowsImgTitleSub({
 		<H.NiceSequence startSeconds={aspects.timeDurSecs * 0.45} style={{
 			margin: '0',
 		}}>
-			<Subtitle displayText={aspects.subtitle} style={{
+			<Subtitle title={aspects.subtitle} style={{
 				gridRow: '3',
 				alignSelf: 'start',
 				margin: '0.18em 0.5em 0 0.5em',

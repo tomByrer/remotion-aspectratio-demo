@@ -7,7 +7,7 @@ export function SmallTitle({
 }) {
 	return (
 		<div style={{flex: '100', backgroundColor: backColor}}>
-			<Subtitle displayText={titleText} frontColor={frontColor} />
+			<Subtitle title={titleText} frontColor={frontColor} />
 		</div>
 	)
 }

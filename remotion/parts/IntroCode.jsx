@@ -3,7 +3,7 @@ import * as useAnimation from '../actions/useAnimation';
 
 export function IntroCode({
 	durationInSeconds=2,
-	titleText='This is title text',
+	title='Default title text',
 	fontVWRatio=3.7234,
 	frontColor='#e9e4d7',
 	backColor='#161b2872',
@@ -22,7 +22,7 @@ export function IntroCode({
 					opacity: useAnimation.fadeInOutTapered(durationInSeconds),
 				}}
 			>
-				{titleText}
+				{title}
 			</code></pre>
 		</div>
 	)

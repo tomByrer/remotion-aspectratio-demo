@@ -2,7 +2,7 @@ import * as useConvert from '../helpers/useConvert';
 import * as useAnimation from '../actions/useAnimation';
 
 export function Subtitle({
-	displayText='subtitle text',
+	title='subtitle text',
 	style={color: 'teal'},
 }) {
 	const fudgeMax = (useConvert.aspectRatio() < 0) ? null : 700
@@ -18,7 +18,7 @@ export function Subtitle({
 				opacity: useAnimation.fadeIn(0.618),
 			}}
 		>
-			{displayText}
+			{title}
 		</h2>
 	)
 }
