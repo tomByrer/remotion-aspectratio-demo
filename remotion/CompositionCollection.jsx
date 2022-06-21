@@ -3,16 +3,18 @@ import {Composition} from 'remotion';
 import * as settings from "./helpers/settings"
 import { prep } from './helpers/prep-transcript'
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
-import { NiceComposition } from './helpers/Helper'
+import { NiceComposition, SimpleComposition } from './helpers/Helper'
 import { TitleOutlined } from './parts/TitleOutlined'
 
-import { transcriptTimeTest } from '../remotion/transcripts/time-test'
+// import * as time_test from '../remotion/transcripts/time_test'
+import * as test_IntroCode from './transcripts/test_IntroCode'
+import * as test_TitleOutlined from './transcripts/test_TitleOutlined'
 
 export const CompositionCollection = () => {
 	let preset = settings.presets.SMALL
 	let vidKey = 'square'
 	let vidSize = preset.vidSizes[vidKey]
-	let preparedTR = prep(transcriptTimeTest)
+	// let preparedTR = prep(transcriptTimeTest)
 
 	let
 		component = TitleOutlined,
@@ -59,6 +61,19 @@ export const CompositionCollection = () => {
 				durationInSeconds={3}
 				preset={settings.presets.SMALL}
 				vidKey='square'
+			/>
+
+			<SimpleComposition
+				component={TitleOutlined}
+				transcript={test_TitleOutlined}
+				overrides={{
+					vidKeys: ['square'],
+					segments: [0],
+					props:{
+						displayText: 'SimpleComposition Test Text',
+						style: {color: 'darkred'},
+					},
+				}}
 			/>
 
 			<Composition

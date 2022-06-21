@@ -1,7 +1,10 @@
 import {Composition, Sequence} from 'remotion'
 import * as useConvert from '../helpers/useConvert'
 import {presets} from './settings'
-import {MODE} from '../../CONFIG'
+import {prep}	from './prep-transcript'
+
+import {IntroCode} from '../segments/IntroCode'
+import { TitleOutlined } from '../parts/TitleOutlined'
 
 export function NiceComposition({
 	component,
@@ -14,6 +17,36 @@ export function NiceComposition({
 	height=(vidSize.dimention.h) || 1080,
 	defaultProps=defaultProps??{},
 	id=`${component.name}-${width}x${height}-${preset.fps}fps`,
+}){
+	return (
+		<Composition
+			id={id}
+			component={component}
+			durationInFrames={durationInFrames}
+			fps={preset.fps}
+			width={width}
+			height={height}
+			defaultProps={defaultProps}
+		/>
+	)
+}
+
+export function SimpleComposition({
+	transcript,
+	overrides,
+
+	sequence=prep(transcript).sequence,
+	preset=presets[transcript.config.preset] ?? presets['SMALL'],
+	component={TitleOutlined},
+
+	durationInFrames=sequence[0].timeDurFrames,
+
+	vidKey='square',
+	vidSize = preset.vidSizes[vidKey],
+	width=(vidSize.dimention.w) || 1920,
+	height=(vidSize.dimention.h) || 1080,
+	defaultProps=overrides.props??{},
+	id=`${transcript.info.title}-${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
 	return (
 		<Composition
