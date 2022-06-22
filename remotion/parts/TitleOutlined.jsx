@@ -2,7 +2,7 @@ import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import * as useConvert from '../helpers/useConvert';
 
 export const TitleOutlined = ({
-	title='title text',
+	title='default title text',
 	style={color: 'darkgray'},
 }) => {
 	const text = title.split(' ').map(function (t) {

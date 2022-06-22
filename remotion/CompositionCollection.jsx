@@ -9,6 +9,7 @@ import { TitleOutlined } from './parts/TitleOutlined'
 // import * as time_test from '../remotion/transcripts/time_test'
 import * as test_IntroCode from './transcripts/test_IntroCode'
 import * as test_TitleOutlined from './transcripts/test_TitleOutlined'
+import * as short_remotion from './transcripts/short_remotion'
 
 export const CompositionCollection = () => {
 	let preset = settings.presets.SMALL
@@ -27,7 +28,7 @@ export const CompositionCollection = () => {
 
 	return (
 		<>
-			<Composition
+			{/* <Composition
 				id="TitleOutlinedPreset"
 				component={TitleOutlined}
 				durationInFrames={30}
@@ -38,55 +39,46 @@ export const CompositionCollection = () => {
 					title: 'Preset Test Text',
 					style: {color: 'orange'},
 				}}
+			/> */}
+
+			<NiceComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					// vidKeys: ['square'],
+					height: 50,
+					segments: [0],
+					props:{
+						title: 'NiceComposition Test Text',
+						style: {color: 'purple'},
+					},
+				}}
+			/>
+
+			<NiceComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					// vidKeys: ['square'],
+					height: 100,
+					segments: [0],
+					props:{
+						// title: 'NiceComposition Test 2',
+						style: {color: 'green'},
+					},
+				}}
 			/>
 
 			<SimpleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					// vidKeys: ['square'],
+					height: 150,
 					segments: [0],
-					// props:{
-					// 	title: 'SimpleComposition Test Text',
-					// 	style: {color: 'darkred'},
-					// },
+					props:{
+						title: 'SimpleComposition Test Text',
+						style: {color: 'darkred'},
+					},
 				}}
-				/>
-
-			<NiceComposition
-				component={TitleOutlined}
-				defaultProps={{
-					title: 'NiceComposition Test Text',
-					style: {color: 'darkred'},
-				}}
-				durationInSeconds={3}
-				preset={settings.presets.SMALL}
-				vidKey='square'
-				/>
-
-			<Composition
-				id="TitleOutlined"
-				component={TitleOutlined}
-				durationInFrames={20}
-				fps={16}
-				width={800}
-				height={200}
-				defaultProps={{
-					title: 'Title Test Text',
-					style: {color: 'darkgray'},
-				}}
-				/>
-				{/* <Composition
-					id={id}
-					component={TitleOutlined}
-					durationInFrames={durationInFrames}
-					fps={preset.fps}
-					width={width}
-					height={height}
-					defaultProps={{
-						title: 'Comp variable Test Text',
-						style: {color: 'brown'},
-					}}
-				/> */}
+			/>
 		</>
 	);
 };

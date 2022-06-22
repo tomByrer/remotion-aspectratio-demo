@@ -1,5 +1,5 @@
 export const info = {
-	title: `Mini "Advertisement" for Remotion`,
+	title: `Mini-Remotion-Ad`,
 	credits: `Tom Byrer, based on Remotion & React logo by Johnny Burger.`,
 	v: 0.5,
 }
@@ -19,7 +19,7 @@ export const sequence = [
 		timeDurSecs: 3.75,
 		title: 'Ever wanted to "program" a video in any aspect ratio you wanted?',
 		fontVWRatio: 3.5,
-		colorBack: colors.back,
+		colorBack: data.colors.back,
 		colorFront: '#d9d0c6',
 	},
 	{

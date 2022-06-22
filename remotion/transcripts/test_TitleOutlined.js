@@ -20,7 +20,7 @@ export const sequence = [
 	{
 		layout: 'TitleOutlined',
 		timeDurSecs: 2,
-		title: `Testing IntroCode for ${data.time.DurSecs} seconds`,
+		title: `${data.time.DurSecs}sec TitleOutlined test`,
 
 		colorBack: data.colors.back,
 		colorFront: '#d9d0c6',
