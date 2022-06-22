@@ -35,46 +35,33 @@ export const CompositionCollection = () => {
 				width={vidSize.dimention.w}
 				height={vidSize.dimention.h}
 				defaultProps={{
-					displayText: 'Preset Test Text',
+					title: 'Preset Test Text',
 					style: {color: 'orange'},
 				}}
 			/>
-			{/* <Composition
-				id={id}
-				component={TitleOutlined}
-				durationInFrames={durationInFrames}
-				fps={preset.fps}
-				width={width}
-				height={height}
-				defaultProps={{
-					displayText: 'Comp variable Test Text',
-					style: {color: 'brown'},
+
+			<SimpleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					// vidKeys: ['square'],
+					segments: [0],
+					// props:{
+					// 	title: 'SimpleComposition Test Text',
+					// 	style: {color: 'darkred'},
+					// },
 				}}
-			/> */}
+				/>
 
 			<NiceComposition
 				component={TitleOutlined}
 				defaultProps={{
-					displayText: 'NiceComposition Test Text',
+					title: 'NiceComposition Test Text',
 					style: {color: 'darkred'},
 				}}
 				durationInSeconds={3}
 				preset={settings.presets.SMALL}
 				vidKey='square'
-			/>
-
-			<SimpleComposition
-				component={TitleOutlined}
-				transcript={test_TitleOutlined}
-				overrides={{
-					vidKeys: ['square'],
-					segments: [0],
-					props:{
-						displayText: 'SimpleComposition Test Text',
-						style: {color: 'darkred'},
-					},
-				}}
-			/>
+				/>
 
 			<Composition
 				id="TitleOutlined"
@@ -84,10 +71,22 @@ export const CompositionCollection = () => {
 				width={800}
 				height={200}
 				defaultProps={{
-					displayText: 'Title Test Text',
+					title: 'Title Test Text',
 					style: {color: 'darkgray'},
 				}}
-			/>
+				/>
+				{/* <Composition
+					id={id}
+					component={TitleOutlined}
+					durationInFrames={durationInFrames}
+					fps={preset.fps}
+					width={width}
+					height={height}
+					defaultProps={{
+						title: 'Comp variable Test Text',
+						style: {color: 'brown'},
+					}}
+				/> */}
 		</>
 	);
 };

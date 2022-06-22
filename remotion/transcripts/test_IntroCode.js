@@ -19,7 +19,7 @@ const data = {
 export const sequence = [
 	{
 		layout: 'IntroCode',
-		timeDurSecs: 2,
+		timeDurSecs: data.time.DurSecs,
 		title: `Testing IntroCode for ${data.time.DurSecs} seconds`,
 
 		colorBack: data.colors.back,

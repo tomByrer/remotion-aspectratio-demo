@@ -49,3 +49,5 @@ https://thierryc.github.io/Next-gh-page-example/
 [ ] FPS in presets
 [ ] NicePlayer
  - format
+ ? "aspects" = seg / segment
+

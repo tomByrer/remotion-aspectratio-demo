@@ -32,7 +32,7 @@ const start = async () => {
   // Select the composition you want to render.
   const composition = {
     id: 'TitleOutlined-360x360-16fps',
-    defaultProps: { displayText: 'Render Test Text', style: {color: 'black'} },
+    defaultProps: { title: 'Render Test Text', style: {color: 'black'} },
     durationInFrames: 55,
     fps: 16,
     height: 200,
