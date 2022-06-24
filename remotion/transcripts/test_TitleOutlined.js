@@ -19,12 +19,18 @@ const data = {
 export const sequence = [
 	{
 		layout: 'TitleOutlined',
-		timeDurSecs: 2,
+		timeDurSecs: data.time.DurSecs,
 		title: `${data.time.DurSecs}sec TitleOutlined test`,
 
-		colorBack: data.colors.back,
-		colorFront: '#d9d0c6',
-		fontVWRatio: 3.5,
+	},
+	{
+		layout: 'TitleOutlined',
+		timeDurSecs: data.time.DurSecs,
+		title: `${data.time.DurSecs}sec TitleOutlined slide 2`,
+		style:{
+			backgroundColor: data.colors.back,
+			fontStyle: 'italic',
+		},
 	},
 ]
 

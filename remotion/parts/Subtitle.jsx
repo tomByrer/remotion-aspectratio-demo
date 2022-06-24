@@ -10,12 +10,12 @@ export function Subtitle({
 	return (
 		<h2
 			style={{
-				...style,
 				fontFamily: 'Helvetica, Arial',
 				fontSize: fontSize,
 				fontWeight: 'lighter',
 				textAlign: 'center',
 				opacity: useAnimation.fadeIn(0.618),
+				...style,
 			}}
 		>
 			{title}

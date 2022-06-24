@@ -33,7 +33,6 @@ export function NiceComposition({
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
 
-	// defaultProps=overrides.props ?? segment, //segment = aspects
 	defaultProps={...segment, ...overrides.props}, //segment = aspects
 	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
@@ -55,17 +54,19 @@ export function SimpleComposition({
 	transcript,
 	overrides={},
 
-	segment=prep(transcript).sequence[0],
-	component=getComponent(segment.layout),
-	durationInFrames=segment.timeDurFrames ?? 99,
-
 	preset=presets[transcript.config.preset] ?? presets['SMALL'],
-	vidKey=(typeof overrides.vidKeys?.[0] !== 'undefined') ? overrides.vidKeys[0] : Object.keys(preset.vidSizes)[0],
+	vidKey=(typeof overrides.vidKey !== 'undefined') ? overrides.vidKey : Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
 	width=overrides.width ?? vidSize.dimention.w ?? 1920,
 	height=overrides.height ?? vidSize.dimention.h ?? 1080,
 
-	defaultProps=overrides.props ?? segment, //segment = aspects
+	segInt=(typeof overrides.segment !== 'undefined') ? overrides.segment : 1,
+	segment=prep(transcript).sequence[segInt],
+	component=getComponent(segment.layout),
+	durationInFrames=segment.timeDurFrames ?? 99,
+
+	style={...segment.style, ...overrides.props.style,}, //TODO unsure if best signature?  overides.sytle?
+	defaultProps={...segment, ...overrides.props, style:style}, //segment = aspects
 	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
 	return (

@@ -70,12 +70,26 @@ export const CompositionCollection = () => {
 			<SimpleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					// vidKeys: ['square'],
-					height: 150,
-					segments: [0],
+					vidKey: 'feed',
+					// height: 150,
+					segment: 0,
 					props:{
 						title: 'SimpleComposition Test Text',
 						style: {color: 'darkred'},
+					},
+				}}
+			/>
+
+			<SimpleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					vidKey: 'story',
+					// height: 150,
+					segment: 1,
+					props:{
+						title: 'SimpleComposition Test Text',
+
+						style: {color: 'orange', backgroundColor:'linen'},
 					},
 				}}
 			/>

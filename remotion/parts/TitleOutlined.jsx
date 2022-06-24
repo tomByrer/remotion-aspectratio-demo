@@ -21,12 +21,12 @@ export const TitleOutlined = ({
 	return (
 		<h1
 			style={{
-				...style,
 				backgroundColor: 'yellow',
 				fontFamily: 'SF Pro Text, Helvetica, Arial',
 				fontWeight: 'bold',
 				fontSize: fontSize,
 				textAlign: 'center',
+				...style,
 			}}
 		>
 			{text.map(function (t, i) {

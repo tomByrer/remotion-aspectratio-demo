@@ -21,11 +21,11 @@ export const Title = ({
 	return (
 		<h1
 			style={{
-				...style,
 				fontFamily: 'SF Pro Text, Helvetica, Arial',
 				fontWeight: 'bold',
 				fontSize: fontSize,
 				textAlign: 'center',
+				...style,
 			}}
 		>
 			{text.map(function (t, i) {
