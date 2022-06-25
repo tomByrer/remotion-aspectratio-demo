@@ -60,13 +60,16 @@ export function SimpleComposition({
 	width=overrides.width ?? vidSize.dimention.w ?? 1920,
 	height=overrides.height ?? vidSize.dimention.h ?? 1080,
 
-	segInt=(typeof overrides.segment !== 'undefined') ? overrides.segment : 1,
+	segInt=(typeof overrides.segment !== 'undefined') ? overrides.segment : 0,
 	segment=prep(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
 
-	style={...segment.style, ...overrides.props.style,}, //TODO unsure if best signature?  overides.sytle?
-	defaultProps={...segment, ...overrides.props, style:style}, //segment = aspects
+	styleToInsert=JSON.stringify(segment.style)?.slice(1,-1),
+	style = (overrides.props.style)	? JSON.parse( JSON.stringify( overrides.props.style )?.replace( /"style":"insert"/gm,styleToInsert ) ) : segment?.style,
+
+	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
+
 	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
 	return (

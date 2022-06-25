@@ -41,7 +41,7 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			<NiceComposition
+			{/* <NiceComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					// vidKeys: ['square'],
@@ -65,7 +65,7 @@ export const CompositionCollection = () => {
 						style: {color: 'green'},
 					},
 				}}
-			/>
+			/> */}
 
 			<SimpleComposition
 				transcript={test_TitleOutlined}
@@ -83,13 +83,37 @@ export const CompositionCollection = () => {
 			<SimpleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKey: 'story',
-					// height: 150,
+					vidKey: 'square',
+					height: 110,
 					segment: 1,
 					props:{
-						title: 'SimpleComposition Test Text',
-
+						title: 'SimpleComp Style Test last',
 						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
+					},
+				}}
+			/>
+
+			<SimpleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					vidKey: 'square',
+					height: 120,
+					segment: 1,
+					props:{
+						title: 'SimpleComp Style Test first',
+						style: {style: 'insert', color: 'orange', backgroundColor:'linen',},
+					},
+				}}
+			/>
+
+			<SimpleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					// vidKey: 'square',
+					height: 130,
+					// segment: 1,
+					props:{
+						title: 'SimpleComp no seg, vidKey, nor style',
 					},
 				}}
 			/>

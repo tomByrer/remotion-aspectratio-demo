@@ -21,13 +21,13 @@ export const sequence = [
 		layout: 'TitleOutlined',
 		timeDurSecs: data.time.DurSecs,
 		title: `${data.time.DurSecs}sec TitleOutlined test`,
-
 	},
 	{
 		layout: 'TitleOutlined',
 		timeDurSecs: data.time.DurSecs,
 		title: `${data.time.DurSecs}sec TitleOutlined slide 2`,
 		style:{
+			//DEFAULT color:'black,
 			backgroundColor: data.colors.back,
 			fontStyle: 'italic',
 		},
