@@ -89,7 +89,7 @@ export const CompositionCollection = () => {
 					props:{
 						title: 'SimpleComposition Test Text',
 
-						style: {color: 'orange', backgroundColor:'linen'},
+						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
 					},
 				}}
 			/>
