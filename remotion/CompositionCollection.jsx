@@ -3,7 +3,7 @@ import {Composition} from 'remotion';
 import * as settings from "./helpers/settings"
 import { prep } from './helpers/prep-transcript'
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
-import { NiceComposition, SimpleComposition } from './helpers/Helper'
+import { NiceComposition, SingleComposition } from './helpers/Helper'
 import { TitleOutlined } from './parts/TitleOutlined'
 
 // import * as time_test from '../remotion/transcripts/time_test'
@@ -70,30 +70,30 @@ export const CompositionCollection = () => {
 			<NiceComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					// vidKeys: ['square'],
+					vidKeys: ['SDTV','square'],
 					// height: 100,
 					segments: [0, 1],
 					props:{
 						// title: 'NiceComposition Test 2',
-						style: {color: 'green'}, //TODO add style insert
+						style: {color:'green'},
 					},
 				}}
 			/>
 
-			{/* <SimpleComposition
+			{/* <SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKey: 'feed',
 					// height: 150,
 					segment: 0,
 					props:{
-						title: 'SimpleComposition Test Text',
+						title: 'SingleComposition Test Text',
 						style: {color: 'darkred'},
 					},
 				}}
 			/>
 
-			<SimpleComposition
+			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKey: 'square',
@@ -106,7 +106,7 @@ export const CompositionCollection = () => {
 				}}
 			/>
 
-			<SimpleComposition
+			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKey: 'square',
@@ -119,7 +119,7 @@ export const CompositionCollection = () => {
 				}}
 			/>
 
-			<SimpleComposition
+			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					// vidKey: 'square',
