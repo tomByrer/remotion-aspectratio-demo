@@ -41,33 +41,17 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			{/* <NiceComposition
-				transcript={test_TitleOutlined}
-				overrides={{
-					vidKeys: ['SDTV'],
-					// height: 50,
-					segments: [1],
-					props:{
-						title: 'NiceComposition Test Text',
-						style: {style: 'insert', color: 'purple'},
-					},
-				}}
-			/> */}
-{/*
 			<NiceComposition
+				idSuffix='-noprops'
 				transcript={test_TitleOutlined}
 				overrides={{
-					// vidKeys: ['square'],
+					vidKeys: ['SDTV','square'],
 					// height: 100,
-					// segments: [0],
-					props:{
-						// title: 'NiceComposition Test 2',
-						style: {color: 'green'},
-					},
+					segments: [0, 1],
 				}}
-			/> */}
-
+			/>
 			<NiceComposition
+				idSuffix='-insertend'
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKeys: ['SDTV','square'],
@@ -75,46 +59,20 @@ export const CompositionCollection = () => {
 					segments: [0, 1],
 					props:{
 						// title: 'NiceComposition Test 2',
-						style: {color:'green'},
+						style: {color: 'brown', backgroundColor:'linen', style: 'insert'},
 					},
 				}}
 			/>
-
-			{/* <SingleComposition
+			<NiceComposition
+				idSuffix='-insertstart'
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKey: 'feed',
-					// height: 150,
-					segment: 0,
+					vidKeys: ['feed','square'],
+					// height: 100,
+					segments: [0, 1],
 					props:{
-						title: 'SingleComposition Test Text',
-						style: {color: 'darkred'},
-					},
-				}}
-			/>
-
-			<SingleComposition
-				transcript={test_TitleOutlined}
-				overrides={{
-					vidKey: 'square',
-					height: 110,
-					segment: 1,
-					props:{
-						title: 'SimpleComp Insert Style last',
-						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
-					},
-				}}
-			/>
-
-			<SingleComposition
-				transcript={test_TitleOutlined}
-				overrides={{
-					vidKey: 'square',
-					height: 120,
-					segment: 1,
-					props:{
-						title: 'SimpleComp Style Test first',
-						style: {style: 'insert', color: 'orange', backgroundColor:'linen',},
+						title: 'NiceComposition Purple',
+						style: {style: 'insert', color:'purple'},
 					},
 				}}
 			/>
@@ -129,7 +87,31 @@ export const CompositionCollection = () => {
 						title: 'SimpleComp no seg, vidKey, nor style',
 					},
 				}}
-			/> */}
+			/>
+			<SingleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					vidKey: 'square',
+					height: 110,
+					segment: 1,
+					props:{
+						title: 'SimpleComp Insert Style last',
+						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
+					},
+				}}
+			/>
+			<SingleComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					vidKey: 'square',
+					height: 120,
+					segment: 1,
+					props:{
+						title: 'SimpleComp Style Test first',
+						style: {style: 'insert', color: 'orange', backgroundColor:'linen',},
+					},
+				}}
+			/>
 		</>
 	);
 };

@@ -18,6 +18,7 @@ function getComponent(componentName='TitleOutlined'){
 }
 
 export function NiceComposition({
+	idSuffix='-',
 	transcript,
 	overrides={},
 }){
@@ -33,6 +34,7 @@ export function NiceComposition({
 					overrides={overrides}
 					// assign internal var
 					idStub={idStub}
+					idSuffix={idSuffix}
 					segInt={segInt}
 					vidKey={vidKey}
 				/>
@@ -61,8 +63,8 @@ export function SingleComposition({
 	durationInFrames=segment.timeDurFrames ?? 99,
 
 	styleToInsert=(segment.style) ? JSON.stringify(segment.style)?.slice(1,-1) : '',
-	styleBase=(overrides.props.style) ? JSON.stringify(overrides.props.style) : '',
-	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (segment.style) ? segment.style : (overrides.props.style) ? overrides.props.style : {},
+	styleBase=(overrides?.props?.style) ? JSON.stringify(overrides.props.style) : '',
+	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (styleToInsert) ? segment.style : (styleBase) ? overrides.props.style : {},
 	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
 
 	idStub='',
