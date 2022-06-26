@@ -47,7 +47,7 @@ export function NiceComposition({
 export function SingleComposition({
 	// segInt=0,
 	transcript,
-	overrides={},
+	overrides={props:{style:{style: 'insert'}}},
 
 	preset=presets[transcript.config.preset] ?? presets['SMALL'],
 	vidKey=(typeof overrides.vidKey !== 'undefined') ? overrides.vidKey : Object.keys(preset.vidSizes)[0],
@@ -60,14 +60,16 @@ export function SingleComposition({
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
 
-	styleToInsert=JSON.stringify(segment.style)?.slice(1,-1),
-	style = (overrides.props.style)	? JSON.parse( JSON.stringify(overrides.props.style)?.replace(/"style":"insert"/gm, styleToInsert) ) : segment?.style,
+	styleToInsert=(segment.style) ? JSON.stringify(segment.style)?.slice(1,-1) : '',
+	styleBase=(overrides.props.style) ? JSON.stringify(overrides.props.style) : '',
+	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (segment.style) ? segment.style : (overrides.props.style) ? overrides.props.style : {},
 	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
 
 	idStub='',
-	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps`,
+	idSuffix='', // unique ID if clone & change only style, etc
+	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps${idSuffix}`,
 }){
-	console.log('simple', idStub, id)
+	console.log('simple', idSuffix, id, styleToInsert, style)
 	return (
 		<Composition
 			id={id}
@@ -80,7 +82,6 @@ export function SingleComposition({
 		/>
 	)
 }
-
 
 export function NiceSequence({
 	startSeconds=0,
