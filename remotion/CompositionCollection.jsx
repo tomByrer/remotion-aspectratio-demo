@@ -41,7 +41,7 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			<NiceComposition
+			{/* <NiceComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKeys: ['SDTV'],
@@ -52,8 +52,8 @@ export const CompositionCollection = () => {
 						style: {style: 'insert', color: 'purple'},
 					},
 				}}
-			/>
-
+			/> */}
+{/*
 			<NiceComposition
 				transcript={test_TitleOutlined}
 				overrides={{
@@ -63,6 +63,19 @@ export const CompositionCollection = () => {
 					props:{
 						// title: 'NiceComposition Test 2',
 						style: {color: 'green'},
+					},
+				}}
+			/> */}
+
+			<NiceComposition
+				transcript={test_TitleOutlined}
+				overrides={{
+					// vidKeys: ['square'],
+					// height: 100,
+					segments: [0, 1],
+					props:{
+						// title: 'NiceComposition Test 2',
+						style: {color: 'green'}, //TODO add style insert
 					},
 				}}
 			/>
