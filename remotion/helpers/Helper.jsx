@@ -29,27 +29,15 @@ export function NiceComposition({
 
 }){
 	const segList= overrides.segments || [0]
-	const Compositions = segList.map((segInt, idx)=>{
-		const segment=prep(transcript).sequence[segInt]
-		const component=getComponent(segment.layout)
-		const durationInFrames=segment.timeDurFrames ?? 99
-
-		const styleToInsert=JSON.stringify(segment.style)?.slice(1,-1)
-		const style = (overrides.props.style)	? JSON.parse( JSON.stringify(overrides.props.style)?.replace(/"style":"insert"/gm, styleToInsert) ) : segment?.style
-		const defaultProps={...segment, ...overrides.props, ...{style:style}} //segment = aspects
-
-		const id=`${transcript.info.title}-${idx}s${segInt}-${component.name}-${width}x${height}-${preset.fps}fps`
-		console.log('id', id)
+	const Compositions = segList.map((segInt, segIdx)=>{
+		const idStub=`${segIdx}s${segInt}`
+		console.log('seg', segInt, overrides)
 		return(
-			<Composition
-				key={id}
-				id={id}
-				component={component}
-				durationInFrames={durationInFrames}
-				fps={preset.fps}
-				width={width}
-				height={height}
-				defaultProps={defaultProps}
+			<SimpleComposition
+				idStub={idStub}
+				segInt={segInt}
+				transcript={transcript}
+				overrides={overrides}
 			/>
 		)
 	})
@@ -63,6 +51,8 @@ export function NiceComposition({
 
 /* Single Composition, so `vidKey` & `segment` are singular */
 export function SimpleComposition({
+	idStub='',
+	// segInt=0,
 	transcript,
 	overrides={},
 
@@ -81,8 +71,9 @@ export function SimpleComposition({
 	style = (overrides.props.style)	? JSON.parse( JSON.stringify(overrides.props.style)?.replace(/"style":"insert"/gm, styleToInsert) ) : segment?.style,
 	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
 
-	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,
+	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
+	console.log('simple', idStub, id)
 	return (
 		<Composition
 			id={id}
