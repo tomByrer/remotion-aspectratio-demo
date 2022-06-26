@@ -25,7 +25,7 @@ export const sequence = [
 	{
 		layout: 'TitleOutlined',
 		timeDurSecs: data.time.DurSecs,
-		title: `${data.time.DurSecs}sec TitleOutlined slide 2`,
+		title: `${data.time.DurSecs}sec TitleOutlined w/style`,
 		style:{
 			//DEFAULT color:'black,
 			backgroundColor: data.colors.back,

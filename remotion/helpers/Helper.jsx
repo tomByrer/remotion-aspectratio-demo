@@ -23,17 +23,19 @@ export function NiceComposition({
 
 	preset=presets[transcript.config.preset] ?? presets['SMALL'],
 	vidKey=(typeof overrides.vidKeys?.[0] !== 'undefined') ? overrides.vidKeys[0] : Object.keys(preset.vidSizes)[0],
-	// vidKey=overrides.vidKeys?.[0] ?? Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
 	width=overrides.width ?? vidSize.dimention.w ?? 1920,
 	height=overrides.height ?? vidSize.dimention.h ?? 1080,
 
-	segInt=(typeof overrides.segments?.[0] !== 'undefined') ? overrides.segments[0] : 1,
+	segInt=(typeof overrides.segments?.[0] !== 'undefined') ? overrides.segments[0] : 0,
 	segment=prep(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
 
-	defaultProps={...segment, ...overrides.props}, //segment = aspects
+	styleToInsert=JSON.stringify(segment.style)?.slice(1,-1),
+	style = (overrides.props.style)	? JSON.parse( JSON.stringify(overrides.props.style)?.replace(/"style":"insert"/gm, styleToInsert) ) : segment?.style,
+	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
+
 	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,
 }){
 	console.log('seg', segment)
@@ -50,6 +52,7 @@ export function NiceComposition({
 	)
 }
 
+/* Single Composition, so `vidKey` & `segment` are singular */
 export function SimpleComposition({
 	transcript,
 	overrides={},
@@ -66,8 +69,7 @@ export function SimpleComposition({
 	durationInFrames=segment.timeDurFrames ?? 99,
 
 	styleToInsert=JSON.stringify(segment.style)?.slice(1,-1),
-	style = (overrides.props.style)	? JSON.parse( JSON.stringify( overrides.props.style )?.replace( /"style":"insert"/gm,styleToInsert ) ) : segment?.style,
-
+	style = (overrides.props.style)	? JSON.parse( JSON.stringify(overrides.props.style)?.replace(/"style":"insert"/gm, styleToInsert) ) : segment?.style,
 	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
 
 	id=`${transcript.info.title}--${component.name}-${width}x${height}-${preset.fps}fps`,

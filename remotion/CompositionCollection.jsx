@@ -41,15 +41,15 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			{/* <NiceComposition
+			<NiceComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					// vidKeys: ['square'],
-					height: 50,
-					segments: [0],
+					vidKeys: ['SDTV'],
+					// height: 50,
+					segments: [1],
 					props:{
 						title: 'NiceComposition Test Text',
-						style: {color: 'purple'},
+						style: {style: 'insert', color: 'purple'},
 					},
 				}}
 			/>
@@ -58,16 +58,16 @@ export const CompositionCollection = () => {
 				transcript={test_TitleOutlined}
 				overrides={{
 					// vidKeys: ['square'],
-					height: 100,
-					segments: [0],
+					// height: 100,
+					// segments: [0],
 					props:{
 						// title: 'NiceComposition Test 2',
 						style: {color: 'green'},
 					},
 				}}
-			/> */}
+			/>
 
-			<SimpleComposition
+			{/* <SimpleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					vidKey: 'feed',
@@ -87,7 +87,7 @@ export const CompositionCollection = () => {
 					height: 110,
 					segment: 1,
 					props:{
-						title: 'SimpleComp Style Test last',
+						title: 'SimpleComp Insert Style last',
 						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
 					},
 				}}
@@ -116,7 +116,7 @@ export const CompositionCollection = () => {
 						title: 'SimpleComp no seg, vidKey, nor style',
 					},
 				}}
-			/>
+			/> */}
 		</>
 	);
 };
