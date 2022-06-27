@@ -1,5 +1,5 @@
 export const info = {
-	title: `Remotion Advertisement`,
+	title: `Remotion-Advertisement`,
 	credits: `Tom Byrer, based on Remotion & React logos by Johnny Burger.`,
 	v: 0.5,
 }

@@ -4,6 +4,7 @@ import {presets} from './settings'
 import {prep}	from './prep-transcript'
 
 import { IntroCode } from '../segments/IntroCode'
+import { ThreeRowsImgTitleSub } from '../segments/ThreeRowsImgTitleSub'
 import { TitleOutlined } from '../parts/TitleOutlined'
 import { Warning } from '../parts/Warning'
 
@@ -12,6 +13,8 @@ function getComponent(componentName='TitleOutlined'){
 	switch(componentName){
 		case 'IntroCode':
 			return(IntroCode)
+		case 'ThreeRowsImgTitleSub':
+			return(ThreeRowsImgTitleSub)
 		case 'TitleOutlined':
 			return(TitleOutlined)
 		default:
@@ -24,10 +27,10 @@ export function NiceComposition({
 	transcript,
 	overrides={},
 }){
-	const segList= overrides.segments || [0]
+	const segList= overrides.segments || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
 	const vidKeyList= overrides.vidKeys || ['square'] //FIXME arrary
 	const CompsAllSegs = segList.map((segInt, segIdx)=>{
-		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){
+		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
 		const CompsVidsPerSeg = vidKeyList.map((vidKey, vidKeyIdx)=>{

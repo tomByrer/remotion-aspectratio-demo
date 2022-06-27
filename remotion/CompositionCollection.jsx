@@ -7,6 +7,7 @@ import { NiceComposition, SingleComposition } from './helpers/Helper'
 import { TitleOutlined } from './parts/TitleOutlined'
 
 // import * as time_test from '../remotion/transcripts/time_test'
+import * as about_remotion from './transcripts/about_remotion'
 import * as test_IntroCode from './transcripts/test_IntroCode'
 import * as test_TitleOutlined from './transcripts/test_TitleOutlined'
 import * as short_remotion from './transcripts/short_remotion'
@@ -88,8 +89,8 @@ export const CompositionCollection = () => {
 					},
 				}}
 			/> */}
-			<NiceComposition
-				idSuffix='--'
+			{/* <NiceComposition
+				idSuffix='-IC'
 				transcript={test_IntroCode}
 				overrides={{
 					vidKeys: ['feed','square'],
@@ -99,9 +100,21 @@ export const CompositionCollection = () => {
 						style: {style: 'insert', color:'purple'},
 					},
 				}}
+			/> */}
+			<NiceComposition
+				idSuffix='-AR'
+				transcript={about_remotion}  //TODO kinda ugly; no background, etc
+				overrides={{
+					vidKeys: ['square'],
+					// height: 100,
+					// segments: 'all', //NOTE no segments override = all
+					props:{
+						style: {style: 'insert', color:'purple'},
+					},
+				}}
 			/>
 
-			<SingleComposition
+			{/* <SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
 					// vidKey: 'square',
@@ -135,7 +148,7 @@ export const CompositionCollection = () => {
 						style: {style: 'insert', color: 'orange', backgroundColor:'linen',},
 					},
 				}}
-			/>
+			/> */}
 		</>
 	);
 };
