@@ -89,7 +89,7 @@ export const CompositionCollection = () => {
 					},
 				}}
 			/> */}
-			{/* <NiceComposition
+			<NiceComposition
 				idSuffix='-IC'
 				transcript={test_IntroCode}
 				overrides={{
@@ -100,12 +100,12 @@ export const CompositionCollection = () => {
 						style: {style: 'insert', color:'purple'},
 					},
 				}}
-			/> */}
+			/>
 			<NiceComposition
 				idSuffix='-AR'
 				transcript={about_remotion}  //TODO kinda ugly; no background, etc
 				overrides={{
-					vidKeys: ['square'],
+					// vidKeys: ['SDTV'],
 					// height: 100,
 					// segments: 'all', //NOTE no segments override = all
 					props:{

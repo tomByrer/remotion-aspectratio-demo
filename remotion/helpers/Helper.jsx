@@ -26,16 +26,18 @@ export function NiceComposition({
 	idSuffix='-',
 	transcript,
 	overrides={},
+
+	preset=presets[transcript.config.preset] ?? presets['SMALL'],
 }){
 	const segList= overrides.segments || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
-	const vidKeyList= overrides.vidKeys || ['square'] //FIXME arrary
+	const vidKeyList= overrides.vidKeys || transcript.config?.vidKeys || Object.keys(preset.vidSizes)
 	const CompsAllSegs = segList.map((segInt, segIdx)=>{
 		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
 		const CompsVidsPerSeg = vidKeyList.map((vidKey, vidKeyIdx)=>{
 			const idStub=`${segIdx}s${segInt}`
-			console.log('seg', segInt, vidKey, overrides)
+			// console.log('seg', segInt, vidKey, overrides)
 			return(
 				<SingleComposition
 					transcript={transcript}
@@ -43,6 +45,7 @@ export function NiceComposition({
 					// assign internal var
 					idStub={idStub}
 					idSuffix={idSuffix}
+					preset={preset}
 					segInt={segInt}
 					vidKey={vidKey}
 				/>
