@@ -5,7 +5,7 @@ export const info = {
 }
 export const config = {
 	preset: 'SMALL',
-	aspectratios: ['square'],
+	vidKeys: ['square'],
 }
 
 export const sequence = [

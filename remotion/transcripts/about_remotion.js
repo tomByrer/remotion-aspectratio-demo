@@ -4,8 +4,8 @@ export const info = {
 	v: 0.5,
 }
 export const config = {
-	preset: 'SMALL',
-	aspectratios: ['square'],
+	preset: 'DEVELOP',
+	vidKeys: ['square'],
 }
 
 const data = {
