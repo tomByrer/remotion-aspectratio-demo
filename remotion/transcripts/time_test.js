@@ -1,5 +1,5 @@
 export const info = {
-	title: `Time/Framecount Test`,
+	title: `Time-Framecount`,
 	credits: `Tom Byrer`,
 	v: 0.5,
 }

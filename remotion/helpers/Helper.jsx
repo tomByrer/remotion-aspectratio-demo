@@ -6,6 +6,7 @@ import {prep}	from './prep-transcript'
 import { IntroCode } from '../segments/IntroCode'
 import { ThreeRowsImgTitleSub } from '../segments/ThreeRowsImgTitleSub'
 import { TitleOutlined } from '../parts/TitleOutlined'
+import { TwoCenteredCode } from '../segments/TwoCenteredCode'
 import { Warning } from '../parts/Warning'
 
 function getComponent(componentName='TitleOutlined'){
@@ -17,6 +18,8 @@ function getComponent(componentName='TitleOutlined'){
 			return(ThreeRowsImgTitleSub)
 		case 'TitleOutlined':
 			return(TitleOutlined)
+		case 'TwoCenteredCode':
+			return(TwoCenteredCode)
 		default:
 			return(Warning)
 		}
@@ -27,7 +30,7 @@ export function NiceComposition({
 	transcript,
 	overrides={},
 
-	preset=presets[transcript.config.preset] ?? presets['SMALL'],
+	preset=presets[overrides.preset] ?? presets[transcript.config.preset] ?? presets['SMALL'],
 }){
 	const segList= overrides.segments || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
 	const vidKeyList= overrides.vidKeys || transcript.config?.vidKeys || Object.keys(preset.vidSizes)
@@ -62,7 +65,7 @@ export function SingleComposition({
 	transcript,
 	overrides={props:{style:{style: 'insert'}}},
 
-	preset=presets[transcript.config.preset] ?? presets['SMALL'],
+	preset=presets[overrides.preset] ?? presets[transcript.config.preset] ?? presets['SMALL'],
 	vidKey=(typeof overrides.vidKey !== 'undefined') ? overrides.vidKey : Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
 	width=overrides.width ?? vidSize.dimention.w ?? 1920,

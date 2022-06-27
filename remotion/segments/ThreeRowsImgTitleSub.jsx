@@ -22,6 +22,7 @@ export function ThreeRowsImgTitleSub({
 		jsx={aspects.animatedLogo}
 	/>
 	return (<div style={{
+		height: '100%',
 		width: '100%',
 		display: 'grid',
 		gridTemplateRows: '8fr 1fr 2.5fr',
