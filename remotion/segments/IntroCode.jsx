@@ -8,6 +8,7 @@ export function IntroCode({
 		fontVWRatio: 3.7234,
 		colorBack: '#111',
 		colorFront: '#eee',
+		style: {},
 	}
 }) {
 	return (
@@ -22,6 +23,7 @@ export function IntroCode({
 					fontSize: useConvert.vw(aspects.fontVWRatio),
 					textAlign: 'left',
 					opacity: useAnimation.fadeInOutTapered(aspects.timeDurSecs),
+					...aspects.style,
 				}}
 			>
 				{aspects.title}

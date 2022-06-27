@@ -11,7 +11,6 @@ export function ArrangeSeries({transcript, }) {
 
 	return (<>
 		{transcript.map( function(aspects, i){
-			// const durFrames = useConvert.seconds2frames(aspects.timeDurSecs)
 			const key = i + aspects.layout
 			switch(aspects.layout){
 				case 'IntroCode':

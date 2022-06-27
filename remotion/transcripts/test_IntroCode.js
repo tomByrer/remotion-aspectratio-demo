@@ -13,7 +13,7 @@ const data = {
 		back: '#39ff14',
 	},
 	time: {
-		DurSecs: 2,
+		DurSecs: 4,
 	}
 }
 export const sequence = [
@@ -22,9 +22,9 @@ export const sequence = [
 		timeDurSecs: data.time.DurSecs,
 		title: `Testing IntroCode for ${data.time.DurSecs} seconds`,
 
-		colorBack: data.colors.back,
-		colorFront: '#d9d0c6',
 		fontVWRatio: 3.5,
+		colorBack: '#10131f',
+		colorFront: data.colors.back,
 	},
 ]
 

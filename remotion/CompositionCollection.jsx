@@ -41,7 +41,7 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			<NiceComposition
+			{/* <NiceComposition
 				idSuffix='-noprops'
 				transcript={test_TitleOutlined}
 				overrides={{
@@ -49,8 +49,8 @@ export const CompositionCollection = () => {
 					// height: 100,
 					segments: [0, 1],
 				}}
-			/>
-			<NiceComposition
+			/> */}
+			{/* <NiceComposition
 				idSuffix='-insertend'
 				transcript={test_TitleOutlined}
 				overrides={{
@@ -62,8 +62,8 @@ export const CompositionCollection = () => {
 						style: {color: 'brown', backgroundColor:'linen', style: 'insert'},
 					},
 				}}
-			/>
-			<NiceComposition
+			/> */}
+			{/* <NiceComposition
 				idSuffix='-insertstart'
 				transcript={test_TitleOutlined}
 				overrides={{
@@ -72,6 +72,30 @@ export const CompositionCollection = () => {
 					segments: [0, 1],
 					props:{
 						title: 'NiceComposition Purple',
+						style: {style: 'insert', color:'purple'},
+					},
+				}}
+			/> */}
+			{/* <NiceComposition
+				idSuffix='-insertstart'
+				transcript={test_IntroCode}
+				overrides={{
+					vidKeys: ['feed','square'],
+					// height: 100,
+					segments: [0, 1], //NOTE too many segments to test
+					props:{
+						style: {style: 'insert', color:'purple'},
+					},
+				}}
+			/> */}
+			<NiceComposition
+				idSuffix='--'
+				transcript={test_IntroCode}
+				overrides={{
+					vidKeys: ['feed','square'],
+					// height: 100,
+					segments: [0, 1], //NOTE too many segments to test
+					props:{
 						style: {style: 'insert', color:'purple'},
 					},
 				}}

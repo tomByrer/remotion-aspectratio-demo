@@ -3,13 +3,15 @@ import * as useConvert from '../helpers/useConvert'
 import {presets} from './settings'
 import {prep}	from './prep-transcript'
 
-import {IntroCode} from '../segments/IntroCode'
+import { IntroCode } from '../segments/IntroCode'
 import { TitleOutlined } from '../parts/TitleOutlined'
 import { Warning } from '../parts/Warning'
 
 function getComponent(componentName='TitleOutlined'){
 	//TODO optimize
 	switch(componentName){
+		case 'IntroCode':
+			return(IntroCode)
 		case 'TitleOutlined':
 			return(TitleOutlined)
 		default:
@@ -25,6 +27,9 @@ export function NiceComposition({
 	const segList= overrides.segments || [0]
 	const vidKeyList= overrides.vidKeys || ['square'] //FIXME arrary
 	const CompsAllSegs = segList.map((segInt, segIdx)=>{
+		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){
+			return <></>
+		}
 		const CompsVidsPerSeg = vidKeyList.map((vidKey, vidKeyIdx)=>{
 			const idStub=`${segIdx}s${segInt}`
 			console.log('seg', segInt, vidKey, overrides)
@@ -65,13 +70,13 @@ export function SingleComposition({
 	styleToInsert=(segment.style) ? JSON.stringify(segment.style)?.slice(1,-1) : '',
 	styleBase=(overrides?.props?.style) ? JSON.stringify(overrides.props.style) : '',
 	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (styleToInsert) ? segment.style : (styleBase) ? overrides.props.style : {},
-	defaultProps={...segment, ...overrides.props, ...{style:style}}, //segment = aspects
+	defaultProps={aspects:{...segment, ...overrides.props, ...{style:style}}}, //segment = aspects
 
 	idStub='',
 	idSuffix='', // unique ID if clone & change only style, etc
 	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps${idSuffix}`,
 }){
-	console.log('simple', idSuffix, id, styleToInsert, style)
+	console.log('simple', idSuffix, id, defaultProps.aspects)
 	return (
 		<Composition
 			id={id}
