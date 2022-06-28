@@ -5,7 +5,7 @@ import {prep}	from './prep-transcript'
 
 import { IntroCode } from '../segments/IntroCode'
 import { ThreeRowsImgTitleSub } from '../segments/ThreeRowsImgTitleSub'
-import { TitleOutlined } from '../parts/TitleOutlined'
+import { TitleOutlined } from '../segments/TitleOutlined'
 import { TwoCenteredCode } from '../segments/TwoCenteredCode'
 import { Warning } from '../parts/Warning'
 

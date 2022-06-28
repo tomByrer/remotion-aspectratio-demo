@@ -4,7 +4,7 @@ import * as settings from "./helpers/settings"
 import { prep } from './helpers/prep-transcript'
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 import { NiceComposition, SingleComposition } from './helpers/Helper'
-import { TitleOutlined } from './parts/TitleOutlined'
+import { TitleOutlined } from './segments/TitleOutlined'
 
 import * as time_test from '../remotion/transcripts/time_test'
 import * as about_remotion from './transcripts/about_remotion'
@@ -95,6 +95,7 @@ export const CompositionCollection = () => {
 				overrides={{
 					vidKeys: ['feed','square'],
 					// height: 100,
+					// height: 100,
 					segments: [0, 1], //NOTE too many segments to test
 					props:{
 						style: {style: 'insert', color:'purple'},
@@ -103,7 +104,7 @@ export const CompositionCollection = () => {
 			/> */}
 			<NiceComposition
 				idSuffix='-AR'
-				transcript={about_remotion}  //TODO kinda ugly; no background, etc
+				transcript={about_remotion}
 				overrides={{
 					// preset:'SMALL',
 					// vidKeys: ['SDTV'],
@@ -114,9 +115,22 @@ export const CompositionCollection = () => {
 					},
 				}}
 			/>
+			<NiceComposition
+				idSuffix='-tt'
+				transcript={time_test}
+				overrides={{
+					preset:'SMALL',
+					vidKeys: ['SDTV'],
+					// height: 100,
+					// segments: 'all', //NOTE no segments override = all
+					// props:{
+					// 	style: {style: 'insert', color:'purple'},
+					// },
+				}}
+			/>
 			{/* <NiceComposition
 				idSuffix='-AR'
-				transcript={time_test}  //TODO kinda ugly; no background, etc
+				transcript={time_test}
 				overrides={{
 					preset:'SMALL',
 					// vidKeys: ['SDTV'],
