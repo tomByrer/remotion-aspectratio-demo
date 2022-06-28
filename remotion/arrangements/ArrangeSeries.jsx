@@ -5,10 +5,9 @@ import * as useConvert from '../helpers/useConvert'
 import {TwoCenteredCode} from '../segments/TwoCenteredCode'
 import {IntroCode} from '../segments/IntroCode'
 import {ThreeRowsImgTitleSub} from '../segments/ThreeRowsImgTitleSub'
+import { ProgressBar } from 	'../parts/ProgressBar'
 
 export function ArrangeSeries({transcript, }) {
-	const globalFrame = useCurrentFrame()
-
 	return (<>
 		{transcript.map( function(aspects, i){
 			const key = i + aspects.layout
@@ -65,56 +64,7 @@ export function ArrangeSeries({transcript, }) {
 					// aspects.textRight = `seconds of `+ useConvert.frames2seconds( useVideoConfig().durationInFrames)
 					aspects.textRight = <span style={{opacity:FADED_TEXT}}>seconds of {useConvert.frames2seconds( useVideoConfig().durationInFrames)}</span>
 
-
-					/* ProgressBar  csscodelab.com/custom-react-js-progress-bar/ */
-					const Progress = ({}) => {
-						let doneFraction =  (useCurrentFrame() +1) / useVideoConfig().durationInFrames
-						const fontSize = useConvert.sizeFontSmall(69)
-						const widthBar = fontSize / useConvert.vw(97)
-						let isEnoughTextRoom = widthBar / doneFraction < .29
-						// let isEnoughTextRoom = doneFraction > .5
-						console.log('PB', doneFraction, useConvert.vw(), widthBar, fontSize, widthBar / doneFraction)
-
-						let donePercent = doneFraction * 100
-						let doneFixed = donePercent.toFixed()
-
-						return (
-							<div class="progress" style={{
-								backgroundColor: "#d8d8d89f",
-								borderRadius: fontSize,
-								position: "relative",
-								margin: "15 0",
-								height: useConvert.sizeFontSmall(88),
-								width: useConvert.vw(97),
-							}}>
-								{(!isEnoughTextRoom)
-									? <div class="progress-right" style={{
-											position:'fixed',
-											margin:`-${fontSize*0.09}px 0 0 ${donePercent+1}%`,
-											fontSize:`${fontSize}px`,
-										}}>
-											{doneFixed +'%'}
-										</div>
-									: null
-								}
-								<div class="progress-donePercent" style={{
-									display: "flex",
-									alignItems: "end",
-									justifyContent: "end",
-									background: aspects.colorFront,
-									borderRadius: fontSize,
-									height: "100%",
-									width: `${donePercent}%`,
-									color: "#fff",
-									opacity: 1,
-									fontSize: `${fontSize}px`,
-							}}>
-									{(isEnoughTextRoom) ? <div style={{margin:`0 ${fontSize*.8}px 0 0`}}>{doneFixed +'%'}</div> : null}
-								</div>
-							</div>
-						)
-					};
-					aspects.rowBottom = <Progress />
+					aspects.rowBottom = <ProgressBar colorBackDone={aspects.colorFront} />
 
 					return(
 						<Sequence

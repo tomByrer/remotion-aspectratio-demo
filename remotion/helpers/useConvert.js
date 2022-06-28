@@ -1,4 +1,4 @@
-import {useVideoConfig} from 'remotion'
+import { useCurrentFrame, useVideoConfig } from 'remotion'
 
 /* Time */
 
@@ -11,6 +11,9 @@ export function framesUnclaimed(sec){
 }
 export function frames2seconds(frames, frameBump=0){
 	return (frames + frameBump) / useVideoConfig().fps
+}
+export function framesDonePercent(){
+	return (useCurrentFrame() +1) / useVideoConfig().durationInFrames * 100
 }
 
 /* Space */
