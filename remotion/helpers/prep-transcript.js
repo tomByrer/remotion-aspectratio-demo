@@ -38,7 +38,7 @@ export function prep(transcript) {
 		seg.timeEndFrame = Math.round(endFloatFrame + offsetFrame)
 		offsetFrame += endFloatFrame - seg.timeEndFrame
 
-		seg.timeDurFrames = seg.timeEndFrame - seg.timeSrtFrame + 1
+		seg.timeDurFrames = seg.timeEndFrame - seg.timeSrtFrame// + 1
 
 		/* WebVTT */
 		seg.title ||= "Segment "+ i

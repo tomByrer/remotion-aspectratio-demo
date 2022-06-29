@@ -3,6 +3,7 @@ import * as useConvert from '../helpers/useConvert'
 import {presets} from './settings'
 import {prep}	from './prep-transcript'
 
+import { FrameCount } from '../segments/FrameCount'
 import { IntroCode } from '../segments/IntroCode'
 import { ThreeRowsImgTitleSub } from '../segments/ThreeRowsImgTitleSub'
 import { TitleOutlined } from '../segments/TitleOutlined'
@@ -12,6 +13,8 @@ import { Warning } from '../parts/Warning'
 function getComponent(componentName='TitleOutlined'){
 	//TODO optimize
 	switch(componentName){
+		case 'FrameCount':
+			return(FrameCount)
 		case 'IntroCode':
 			return(IntroCode)
 		case 'ThreeRowsImgTitleSub':

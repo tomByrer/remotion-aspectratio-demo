@@ -19,11 +19,12 @@ export const ProgressBar = ({
 			margin: "15 0",
 			height: useConvert.sizeFontSmall(88),
 			width: useConvert.vw(97),
+			fontSize: `${fontSize}px`,
 		}}>
 			{(!isNumberRight)
 				? <div class="progress-right" style={{
 						position:'fixed',
-						margin:`-${fontSize*0.09}px 0 0 ${donePercent+1}%`,
+						margin:`2px 0 0 ${donePercent+1}%`,
 						fontSize:`${fontSize}px`,
 					}}>
 						{doneFixed +'%'}
@@ -32,7 +33,7 @@ export const ProgressBar = ({
 			}
 			<div class="progress-donePercent" style={{
 				display: "flex",
-				alignItems: "end",
+				// alignItems: "end",
 				justifyContent: "end",
 				background: colorBackDone,
 				borderRadius: fontSize,
@@ -40,10 +41,10 @@ export const ProgressBar = ({
 				width: `${donePercent}%`,
 				color: colorFrontDone,
 				opacity: 1,
-				fontSize: `${fontSize}px`,
+				// fontSize: `${fontSize}px`,
 			}}>
 				{(isNumberRight)
-					? <div style={{margin:`0 ${fontSize*.8}px 0 0`}}>{doneFixed +'%'}</div>
+					? <div style={{margin:`2px ${fontSize*.8}px 0 0`,}}>{doneFixed +'%'}</div>
 					: null
 				}
 			</div>

@@ -102,7 +102,7 @@ export const CompositionCollection = () => {
 					},
 				}}
 			/> */}
-			<NiceComposition
+			{/* <NiceComposition
 				idSuffix='-AR'
 				transcript={about_remotion}
 				overrides={{
@@ -114,13 +114,13 @@ export const CompositionCollection = () => {
 						style: {style: 'insert', color:'purple'},
 					},
 				}}
-			/>
+			/> */}
 			<NiceComposition
 				idSuffix='-tt'
 				transcript={time_test}
 				overrides={{
-					preset:'SMALL',
-					vidKeys: ['SDTV'],
+					preset:'SMALL', //FIX FPS only works in SMALL
+					// vidKeys: ['SDTV'],
 					// height: 100,
 					// segments: 'all', //NOTE no segments override = all
 					// props:{
