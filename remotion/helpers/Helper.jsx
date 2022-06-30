@@ -33,15 +33,16 @@ export function NiceComposition({
 	transcript,
 	overrides={},
 
-	preset=presets[overrides.preset] ?? presets[transcript.config.preset] ?? presets['SMALL'],
 }){
+	overrides.config.presetKey ??= transcript.config?.presetKey ?? Object.keys(presets)[0]
+	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[overrides.config.presetKey].vidSizes)
+
 	const segList= overrides.segments || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
-	const vidKeyList= overrides.vidKeys || transcript.config?.vidKeys || Object.keys(preset.vidSizes)
 	const CompsAllSegs = segList.map((segInt, segIdx)=>{
 		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
-		const CompsVidsPerSeg = vidKeyList.map((vidKey, vidKeyIdx)=>{
+		const CompsVidsPerSeg = overrides.config.vidKeys.map((vidKey, vidKeyIdx)=>{
 			const idStub=`${segIdx}s${segInt}`
 			// console.log('seg', segInt, vidKey, overrides)
 			return(
@@ -51,7 +52,6 @@ export function NiceComposition({
 					// assign internal var
 					idStub={idStub}
 					idSuffix={idSuffix}
-					preset={preset}
 					segInt={segInt}
 					vidKey={vidKey}
 				/>
@@ -68,7 +68,7 @@ export function SingleComposition({
 	transcript,
 	overrides={props:{style:{style: 'insert'}}},
 
-	preset=presets[overrides.preset] ?? presets[transcript.config.preset] ?? presets['SMALL'],
+	preset=presets[overrides?.presetKey] ?? presets[transcript.config?.presetKey] ?? presets['SMALL'],
 	vidKey=(typeof overrides.vidKey !== 'undefined') ? overrides.vidKey : Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
 	width=overrides.width ?? vidSize.dimention.w ?? 1920,

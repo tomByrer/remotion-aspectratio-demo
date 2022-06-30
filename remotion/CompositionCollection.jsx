@@ -119,10 +119,12 @@ export const CompositionCollection = () => {
 				idSuffix='-tt'
 				transcript={time_test}
 				overrides={{
-					preset:'SMALL', //FIX FPS only works in SMALL
-					// vidKeys: ['SDTV'],
-					// height: 100,
-					// segments: 'all', //NOTE no segments override = all
+					config:{
+						presetKey:'SMALL', //FIX FPS only works in SMALL
+						// vidKeys: ['SDTV'],
+						// height: 100,
+						// segments: 'all', //NOTE no segments override = all
+					},
 					// props:{
 					// 	style: {style: 'insert', color:'purple'},
 					// },

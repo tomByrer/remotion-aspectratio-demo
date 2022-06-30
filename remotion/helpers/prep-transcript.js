@@ -2,7 +2,9 @@ import * as settings from "./settings"
 // import { MODE } from '../../CONFIG'
 
 export function prep(transcript) {
-	const FPS = settings.presets[transcript.config.preset].fps // avoid useVideoConfig().fps
+	console.log('prep ts', transcript)
+	const FPS = settings.presets[transcript.config.presetKey].fps // avoid useVideoConfig().fps
+	console.log('prep fps', FPS)
 	// const DIVFPS = 1 / FPS // multiply is cheaper than division
 
 	// need to clone; input get muatated

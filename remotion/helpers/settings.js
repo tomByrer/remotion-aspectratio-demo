@@ -111,6 +111,20 @@ export const fps = {
 
 export const presets = {
 	//TODO individual fps per preset; some media hosts cap at 30
+	SMALL: {
+		fps: fps.min,
+		vidSizes: {
+			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360']},
+			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['360p']},
+			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed360']},
+			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['story360']},
+			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['360w']},
+			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
+		},
+		player: {
+			speed: 1.5,
+		},
+	},
 	DEVELOP: {
 		fps: fps.talk,
 		vidSizes: {
@@ -137,20 +151,6 @@ export const presets = {
 		},
 		player: {
 			speed: 1,
-		},
-	},
-	SMALL: {
-		fps: fps.min,
-		vidSizes: {
-			square: {info: aRs['1:1'].info, dimention: aRs['1:1'].sizes['square360']},
-			HDTV: {info: aRs['16:9'].info, dimention: aRs['16:9'].sizes['360p']},
-			feed: {info: aRs['4:5'].info, dimention: aRs['4:5'].sizes['feed360']},
-			story: {info: aRs['9:16'].info, dimention: aRs['9:16'].sizes['story360']},
-			SDTV: {info: aRs['4:3'].info, dimention: aRs['4:3'].sizes['360w']},
-			widescreen: {info: aRs['43:18'].info, dimention: aRs['43:18'].sizes['wqhdFifth']},
-		},
-		player: {
-			speed: 1.5,
 		},
 	},
 	// SPEEDS: {
