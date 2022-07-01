@@ -4,7 +4,7 @@ export const info = {
 	v: 0.0,
 }
 export const config = {
-	preset: 'SMALL',
+	presetKey: 'SMALL',
 	vidKeys: ['square'],
 }
 

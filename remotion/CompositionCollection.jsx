@@ -42,114 +42,74 @@ export const CompositionCollection = () => {
 				}}
 			/> */}
 
-			{/* <NiceComposition
-				idSuffix='-noprops'
-				transcript={test_TitleOutlined}
-				overrides={{
-					vidKeys: ['SDTV','square'],
-					// height: 100,
-					segments: [0, 1],
-				}}
-			/> */}
-			{/* <NiceComposition
+			<NiceComposition
 				idSuffix='-insertend'
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKeys: ['SDTV','square'],
-					// height: 100,
-					segments: [0, 1],
+					config:{
+						vidKeys: ['SDTV','square'],
+						// height: 100,
+						segmentList: [0, 1],
+					},
 					props:{
 						// title: 'NiceComposition Test 2',
 						style: {color: 'brown', backgroundColor:'linen', style: 'insert'},
 					},
 				}}
-			/> */}
-			{/* <NiceComposition
+			/>
+			<NiceComposition
 				idSuffix='-insertstart'
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKeys: ['feed','square'],
-					// height: 100,
-					segments: [0, 1],
+					config:{
+						vidKeys: ['feed','square'],
+						// height: 100,
+						segmentList: [0, 1],
+					},
 					props:{
 						title: 'NiceComposition Purple',
 						style: {style: 'insert', color:'purple'},
 					},
 				}}
-			/> */}
-			{/* <NiceComposition
-				idSuffix='-insertstart'
-				transcript={test_IntroCode}
-				overrides={{
-					vidKeys: ['feed','square'],
-					// height: 100,
-					segments: [0, 1], //NOTE too many segments to test
-					props:{
-						style: {style: 'insert', color:'purple'},
-					},
-				}}
-			/> */}
-			{/* <NiceComposition
-				idSuffix='-IC'
-				transcript={test_IntroCode}
-				overrides={{
-					vidKeys: ['feed','square'],
-					// height: 100,
-					// height: 100,
-					segments: [0, 1], //NOTE too many segments to test
-					props:{
-						style: {style: 'insert', color:'purple'},
-					},
-				}}
-			/> */}
-			{/* <NiceComposition
+			/>
+			<NiceComposition
 				idSuffix='-AR'
 				transcript={about_remotion}
 				overrides={{
-					// preset:'SMALL',
+					config:{
+					// presetKey:'SMALL',
 					// vidKeys: ['SDTV'],
 					// height: 100,
-					// segments: 'all', //NOTE no segments override = all
+					// segmentList: [0], //NOTE no segments override = all
+					},
 					props:{
 						style: {style: 'insert', color:'purple'},
 					},
 				}}
-			/> */}
+			/>
 			<NiceComposition
 				idSuffix='-tt'
 				transcript={time_test}
 				overrides={{
 					config:{
-						presetKey:'SMALL', //FIX FPS only works in SMALL
+						presetKey:'DEVELOP', //FIX FPS only works in SMALL
 						// vidKeys: ['SDTV'],
 						// height: 100,
-						// segments: 'all', //NOTE no segments override = all
+						// segments: 'all',
 					},
 					// props:{
 					// 	style: {style: 'insert', color:'purple'},
 					// },
 				}}
 			/>
-			{/* <NiceComposition
-				idSuffix='-AR'
-				transcript={time_test}
-				overrides={{
-					preset:'SMALL',
-					// vidKeys: ['SDTV'],
-					// height: 100,
-					// segments: 'all', //NOTE no segments override = all
-					props:{
-						style: {style: 'insert', color:'purple'},
-					},
-				}}
-			/> */}
 
-			{/* <SingleComposition
+			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					// vidKey: 'square',
-					height: 130,
-					// segment: 1,
+					config:{
+						// vidKey: 'square',
+						height: 130,
+					},
 					props:{
 						title: 'SimpleComp no seg, vidKey, nor style',
 					},
@@ -158,9 +118,11 @@ export const CompositionCollection = () => {
 			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKey: 'square',
-					height: 110,
-					segment: 1,
+					config:{
+						vidKey: 'square',
+						height: 110,
+						segmentList: [1],
+					},
 					props:{
 						title: 'SimpleComp Insert Style last',
 						style: {color: 'orange', backgroundColor:'linen', style: 'insert'},
@@ -170,15 +132,17 @@ export const CompositionCollection = () => {
 			<SingleComposition
 				transcript={test_TitleOutlined}
 				overrides={{
-					vidKey: 'square',
-					height: 120,
-					segment: 1,
+					config:{
+						vidKey: 'square',
+						height: 120,
+						segmentList: [1],
+					},
 					props:{
 						title: 'SimpleComp Style Test first',
 						style: {style: 'insert', color: 'orange', backgroundColor:'linen',},
 					},
 				}}
-			/> */}
+			/>
 		</>
 	);
 };

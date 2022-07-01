@@ -32,14 +32,17 @@ export function NiceComposition({
 	idSuffix='-',
 	transcript,
 	overrides={},
-
 }){
 	overrides.config.presetKey ??= transcript.config?.presetKey ?? Object.keys(presets)[0]
 	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[overrides.config.presetKey].vidSizes)
 
-	const segList= overrides.segments || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
+	transcript.config.presetKey = overrides.config.presetKey //for prep
+	const sequence = prep(transcript).sequence
+
+	const segList = overrides.config.segmentList || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
 	const CompsAllSegs = segList.map((segInt, segIdx)=>{
-		if (typeof transcript?.sequence[segInt]?.layout === 'undefined'){  //doesSegmentExist?
+		const segment = sequence[segInt]
+		if (typeof segment?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
 		const CompsVidsPerSeg = overrides.config.vidKeys.map((vidKey, vidKeyIdx)=>{
@@ -52,7 +55,8 @@ export function NiceComposition({
 					// assign internal var
 					idStub={idStub}
 					idSuffix={idSuffix}
-					segInt={segInt}
+					// segInt={segInt}
+					segment={segment}
 					vidKey={vidKey}
 				/>
 			)
@@ -68,13 +72,14 @@ export function SingleComposition({
 	transcript,
 	overrides={props:{style:{style: 'insert'}}},
 
-	preset=presets[overrides?.presetKey] ?? presets[transcript.config?.presetKey] ?? presets['SMALL'],
-	vidKey=(typeof overrides.vidKey !== 'undefined') ? overrides.vidKey : Object.keys(preset.vidSizes)[0],
+	presetKey=overrides.config.presetKey ?? transcript.config?.presetKey ?? Object.keys(presets)[0],
+	preset=presets[presetKey],
+	vidKey=(typeof overrides.config.vidKey !== 'undefined') ? overrides.config.vidKey : Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
-	width=overrides.width ?? vidSize.dimention.w ?? 1920,
-	height=overrides.height ?? vidSize.dimention.h ?? 1080,
+	width=overrides.config.width ?? vidSize.dimention.w ?? 1920,
+	height=overrides.config.height ?? vidSize.dimention.h ?? 1080,
 
-	segInt=(typeof overrides.segment !== 'undefined') ? overrides.segment : 0,
+	segInt=(typeof overrides.config.segmentList !== 'undefined') ? overrides.config.segmentList[0] : 0,  //MAYBE 'segmentList' or 'segmentInt'
 	segment=prep(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
