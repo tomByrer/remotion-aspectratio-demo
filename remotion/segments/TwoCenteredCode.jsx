@@ -35,16 +35,17 @@ export const TwoCenteredCode = ({
 			minHeight: useConvert.vh(),
 			minWidth: useConvert.vw(),
 			display: "grid",
-			gridTemplateColumns: "1fr 1fr",
-			gridTemplateRows: "1fr 1fr 1fr",
+			gridAutoColumns: '1fr',
+			gridAutoRows: '1fr',
+			// gridTemplateColumns: "1fr 1fr",
+			// gridTemplateRows: "1fr 1fr 1fr 1fr",
 			gap: "0 0",
 			gridAutoFlow: "row",
 			gridTemplateAreas:
-				`'rowTop rowTop'
-				'codeLeft codeRight'
-				'textLeft textRight'
-				'rowBottom rowBottom`,
-			gridAutoRows: '1fr',
+				`"rowTop rowTop"
+				"codeLeft codeRight"
+				"textLeft textRight"
+				"rowBottom rowBottom"`,
 			placeItems: 'center',
 			textAlign: "center",
 			backgroundColor: aspects.colorBack,
