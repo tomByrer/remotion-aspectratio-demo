@@ -10,12 +10,13 @@ import {
 import { Player } from "@remotion/player";
 
 import * as settings from "./helpers/settings"
-import { MODE } from '../CONFIG'
 import { prep } from './helpers/prep-transcript'
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 import { Controller } from "./arrangements/Controller"
 
 export function Players({transcript, title}) {
+	const presetKey = 'SMALL' //=MODE from settings
+	transcript.config.presetKey = presetKey //override preset for testing
 
 	// transcript data
 	const [valTextarea, setValTextarea] = useState(transcript)
@@ -28,11 +29,11 @@ export function Players({transcript, title}) {
 	}, valTextarea)
 
 	// player convig
-	const [fps, setFps] = useState(settings.presets[MODE].fps)
+	const [fps, setFps] = useState(settings.presets[presetKey].fps)
 
-	const [aspectratios, setAspectratios] = useState(settings.presets[MODE].vidSizes)
+	const [aspectratios, setAspectratios] = useState(settings.presets[presetKey].vidSizes)
 	let arNameList = Object.keys(aspectratios)
-	const [playbackRate, setPlaybackRate] = useState(settings.presets[MODE].player.speed)
+	const [playbackRate, setPlaybackRate] = useState(settings.presets[presetKey].player.speed)
 
 	// UX show controlls on hover
   const [isHovering, setIsHovering] = useState(false)
@@ -94,7 +95,7 @@ export function Players({transcript, title}) {
 	}
 	function restorePlayerOrder(){
 		addLog('restore player order')
-		setAspectratios(settings.presets[MODE].vidSizes)
+		setAspectratios(settings.presets[presetKey].vidSizes)
 	}
 
 	useEffect(() => {
