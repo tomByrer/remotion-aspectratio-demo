@@ -1,8 +1,4 @@
-import {Composition} from 'remotion';
-
 import * as settings from "./helpers/settings"
-import { prep } from './helpers/prep-transcript'
-import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 import { NiceComposition, SingleComposition } from './helpers/Helper'
 import { TitleOutlined } from './segments/TitleOutlined'
 
