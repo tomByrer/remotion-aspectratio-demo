@@ -38,7 +38,7 @@ export function NiceComposition({
 console.log('nice', transcript)
 	if (!transcript) return <></> //FIXME transcripts/warning
 	let preppedTR = prep(transcript, overrides)
-	const sequence = process(prep(transcript, overrides)).sequence
+	const sequence = process(preppedTR).sequence
 
 	return(<>{preppedTR.config.segmentList.map((segInt, segIdx)=>{
 		const segment = sequence[segInt]
@@ -70,14 +70,14 @@ export function SingleComposition({
 	transcript,
 	overrides={props:{style:{style: 'insert'}}},
 
-	presetKey=overrides.config.presetKey ?? transcript.config?.presetKey ?? Object.keys(presets)[0],
+	presetKey=overrides?.config?.presetKey ?? transcript.config?.presetKey ?? Object.keys(presets)[0],
 	preset=presets[presetKey],
 	vidKey=(typeof overrides.config.vidKey !== 'undefined') ? overrides.config.vidKey : Object.keys(preset.vidSizes)[0],
 	vidSize=preset.vidSizes[vidKey],
-	width=overrides.config.width ?? vidSize.dimention.w ?? 1920,
-	height=overrides.config.height ?? vidSize.dimention.h ?? 1080,
+	width=overrides?.config?.width ?? vidSize.dimention.w ?? 1920,
+	height=overrides?.config?.height ?? vidSize.dimention.h ?? 1080,
 
-	segInt=(typeof overrides.config.segmentList !== 'undefined') ? overrides.config.segmentList[0] : 0,  //MAYBE 'segmentList' or 'segmentInt'
+	segInt=(typeof overrides?.config?.segmentList !== 'undefined') ? overrides.config.segmentList[0] : 0,  //MAYBE 'segmentList' or 'segmentInt'
 	segment=process(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
