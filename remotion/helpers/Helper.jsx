@@ -29,10 +29,12 @@ function getComponent(componentName='TitleOutlined'){
 }
 
 export function NiceComposition({
+	key,
 	idSuffix='-',
 	transcript,
 	overrides={},
 }){
+console.log('nice', transcript)
 	if (!transcript) return <></> //FIXME transcripts/warning
 	overrides.config = (overrides.config) ? overrides.config : {};
 	const presetKey= overrides.config?.presetKey || transcript?.config?.presetKey || Object.keys(presets)[0]

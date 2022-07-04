@@ -7,32 +7,47 @@ import { NiceComposition, SingleComposition } from './helpers/Helper'
 import { TitleOutlined } from './segments/TitleOutlined'
 import { transcripts } from './transcripts'
 
-const defaultComp = 	[{
-	id: 'insertend',
-	transcript: 'test_TitleOutlined',
-	overrides: {
-		config:{
-			vidKeys: ['SDTV','square'],
-			// height: 100,
-			// segmentList: [0, 1],
-		},
-		props:{
-			// title: 'NiceComposition Test 2',
-			style: {color: 'brown', backgroundColor:'linen', style: 'insert'},
-		},
+const defaultComp = 	[ //FIXME transcripts/warning
+	{
+		id: 'insertend',
+		transcript: 'test_TitleOutlined',
+		overrides: {
+			config:{
+				vidKeys: ['square'],
+				// height: 100,
+				// segmentList: [0, 1],
+			},
+			props:{
+				// title: 'NiceComposition Test 2',
+				style: {color: 'brown', backgroundColor:'linen', style: 'insert'},
+			},
+		}
+	},{
+		id:'tt',
+		transcript:'time_test',
+		overrides:{
+			config:{
+				presetKey:'DEVELOP', //FIX FPS only works in SMALL
+				// vidKeys: ['SDTV'],
+				// height: 100,
+				// segments: 'all',
+			},
+			// props:{
+			// 	style: {style: 'insert', color:'purple'},
+			// },
+		}
 	}
-}];
+];
 
 export const CompositionViaObj =(comps=[])=>{
 	comps = (comps.length==0) ? comps : defaultComp
-// let	comps[0] = defaultComp
-	const idx = 0
-console.log('CVO', comps)
-	return (
+	return (<>{ comps.map( (comp, idx)=>(
 		<NiceComposition
-			idSuffix={'-' + comps[idx]?.id}
-			transcript={transcripts[comps[idx]?.transcript]}
-			overrides={comps[idx]?.overrides}
+		 	key={'nice'+idx}
+			idSuffix={'-' + comp?.id}
+			transcript={transcripts[comp.transcript]}
+			overrides={comp?.overrides}
 		/>
-	);
+	) )}
+	</>);
 };
