@@ -33,19 +33,22 @@ export function NiceComposition({
 	transcript,
 	overrides={},
 }){
-	overrides.config.presetKey ??= transcript.config?.presetKey ?? Object.keys(presets)[0]
-	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[overrides.config.presetKey].vidSizes)
+	if (!transcript) return <></> //FIXME transcripts/warning
+	overrides.config = (overrides.config) ? overrides.config : {};
+	const presetKey= overrides.config?.presetKey || transcript?.config?.presetKey || Object.keys(presets)[0]
+	overrides.config.presetKey = presetKey
+	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[presetKey].vidSizes)
 
 	transcript.config.presetKey = overrides.config.presetKey //for prep
 	const sequence = prep(transcript).sequence
 
-	const segList = overrides.config.segmentList || Array.from({length:(transcript.sequence.length)},(x,i)=>i)
-	const CompsAllSegs = segList.map((segInt, segIdx)=>{
+	const segList = overrides.config.segmentList || Array.from({length:(transcript.sequence.length)},(x,i)=>i) || [0]
+	return(<>{segList.map((segInt, segIdx)=>{
 		const segment = sequence[segInt]
 		if (typeof segment?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
-		const CompsVidsPerSeg = overrides.config.vidKeys.map((vidKey, vidKeyIdx)=>{
+		return(<>{overrides.config.vidKeys.map((vidKey, vidKeyIdx)=>{
 			const idStub=`${segIdx}s${segInt}`
 			// console.log('seg', segInt, vidKey, overrides)
 			return(
@@ -60,10 +63,8 @@ export function NiceComposition({
 					vidKey={vidKey}
 				/>
 			)
-		})
-		return(<>{CompsVidsPerSeg}</>)
-	})
-	return(<>{CompsAllSegs}</>)
+		})}</>)
+	})}</>)
 }
 
 /* `vidKey` & `segment` are singular (was SimpleComp) */
