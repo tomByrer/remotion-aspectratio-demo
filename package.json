@@ -13,9 +13,9 @@
   ],
   "private": true,
   "scripts": {
-    "remotion-preview": "remotion preview remotion/index.jsx",
+    "remotion-preview": "remotion preview remotion/index.jsx --port 4001",
     "remotion-build": "node remotion/render.mjs",
-    "dev": "next",
+    "dev": "next -p 5001",
     "build": "next build",
     "start": "next start",
     "export": "next export",
