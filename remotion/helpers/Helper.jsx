@@ -1,7 +1,7 @@
-import {Composition, Sequence} from 'remotion'
+import { Composition, Sequence } from 'remotion'
 import * as useConvert from '../helpers/useConvert'
-import {presets} from './settings'
-import {prep}	from './prep-transcript'
+import { presets } from './settings'
+import { process }	from './process-transcript'
 
 import { FrameCount } from '../segments/FrameCount'
 import { IntroCode } from '../segments/IntroCode'
@@ -41,8 +41,8 @@ console.log('nice', transcript)
 	overrides.config.presetKey = presetKey
 	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[presetKey].vidSizes)
 
-	transcript.config.presetKey = overrides.config.presetKey //for prep
-	const sequence = prep(transcript).sequence
+	transcript.config.presetKey = overrides.config.presetKey //for process
+	const sequence = process(transcript).sequence
 
 	const segList = overrides.config.segmentList || Array.from({length:(transcript.sequence.length)},(x,i)=>i) || [0]
 	return(<>{segList.map((segInt, segIdx)=>{
@@ -83,7 +83,7 @@ export function SingleComposition({
 	height=overrides.config.height ?? vidSize.dimention.h ?? 1080,
 
 	segInt=(typeof overrides.config.segmentList !== 'undefined') ? overrides.config.segmentList[0] : 0,  //MAYBE 'segmentList' or 'segmentInt'
-	segment=prep(transcript).sequence[segInt],
+	segment=process(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
 	durationInFrames=segment.timeDurFrames ?? 99,
 

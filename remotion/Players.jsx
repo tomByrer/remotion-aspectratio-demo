@@ -10,7 +10,7 @@ import {
 import { Player } from "@remotion/player";
 
 import * as settings from "./helpers/settings"
-import { prep } from './helpers/prep-transcript'
+import { process } from './helpers/process-transcript'
 import { ArrangeSeries } from "./arrangements/ArrangeSeries"
 import { Controller } from "./arrangements/Controller"
 
@@ -20,12 +20,12 @@ export function Players({transcript, title}) {
 
 	// transcript data
 	const [valTextarea, setValTextarea] = useState(transcript)
-	const [preparedTR, setPreparedTR] = useState( prep(valTextarea) )
-	const [durationInFrames, setDurationInFrames]= useState(preparedTR.sequence.at(-1).timeEndFrame)
+	const [processedTR, setProcessedTR] = useState( process(valTextarea) )
+	const [durationInFrames, setDurationInFrames]= useState(processedTR.sequence.at(-1).timeEndFrame)
 	useEffect(()=>{
-		setPreparedTR( prep(valTextarea) )
-		setDurationInFrames( preparedTR.sequence.at(-1).timeEndFrame ) //COMPAT ES2021, Node16.6
-		// console.log('preparedTR', preparedTR.sequence)
+		setProcessedTR( process(valTextarea) )
+		setDurationInFrames( processedTR.sequence.at(-1).timeEndFrame ) //COMPAT ES2021, Node16.6
+		// console.log('processedTR', processedTR.sequence)
 	}, valTextarea)
 
 	// player convig
@@ -302,7 +302,7 @@ export function Players({transcript, title}) {
 				<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API#webvtt_files">Web Video Text Tracks (captions)</a>, auto generated from the Transcript.
 			</p>
 			<textarea
-				value={preparedTR.vtt}
+				value={processedTR.vtt}
 			>
 			</textarea>
     </div>
@@ -318,7 +318,7 @@ export function Players({transcript, title}) {
 					<Player
 						component={ArrangeSeries} //default
 						inputProps={{
-							transcript: preparedTR.sequence,
+							transcript: processedTR.sequence,
 						}}
 						durationInFrames={durationInFrames}
 						key={'remotion'+ i + arName}

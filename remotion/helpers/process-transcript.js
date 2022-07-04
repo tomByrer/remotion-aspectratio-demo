@@ -1,7 +1,6 @@
 import * as settings from "./settings"
-// import { MODE } from '../../CONFIG'
 
-export function prep(transcript) {
+export function process(transcript) {
 	const FPS = settings.presets[transcript.config.presetKey].fps // avoid useVideoConfig().fps
 	// const DIVFPS = 1 / FPS // multiply is cheaper than division
 
@@ -11,7 +10,7 @@ export function prep(transcript) {
 	//ASSUMPTION: time is seconds-only like VTT
 	let endSecond = 0.0 // time index for last marker
 	let offsetFrame = 0.0  // acculmilates rounding diff, so end is not short
-	let vtt = `WebVTT - generated using TomByrer's prep-transcript
+	let vtt = `WebVTT - generated using TomByrer's process-transcript
 `;
 	for (let i = 0, len = sequence.length; i < sequence.length; i++) {
 		let seg = sequence[i] // Segment

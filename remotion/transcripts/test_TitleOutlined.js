@@ -52,7 +52,7 @@ sequence:
   }
 ]
 
-WebVTT - generated using TomByrer's prep-transcript
+WebVTT - generated using TomByrer's process-transcript
 
 00:00:00.000 --> 00:00:02.000
 - Testing IntroCode for -2- seconds
