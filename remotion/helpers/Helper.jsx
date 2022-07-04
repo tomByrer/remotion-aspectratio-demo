@@ -1,5 +1,6 @@
 import { Composition, Sequence } from 'remotion'
 import * as useConvert from '../helpers/useConvert'
+import { prep }	from './prep-transcript'
 import { presets } from './settings'
 import { process }	from './process-transcript'
 
@@ -36,26 +37,20 @@ export function NiceComposition({
 }){
 console.log('nice', transcript)
 	if (!transcript) return <></> //FIXME transcripts/warning
-	overrides.config = (overrides.config) ? overrides.config : {};
-	const presetKey= overrides.config?.presetKey || transcript?.config?.presetKey || Object.keys(presets)[0]
-	overrides.config.presetKey = presetKey
-	overrides.config.vidKeys ??= transcript.config?.vidKeys ?? Object.keys(presets[presetKey].vidSizes)
+	let preppedTR = prep(transcript, overrides)
+	const sequence = process(prep(transcript, overrides)).sequence
 
-	transcript.config.presetKey = overrides.config.presetKey //for process
-	const sequence = process(transcript).sequence
-
-	const segList = overrides.config.segmentList || Array.from({length:(transcript.sequence.length)},(x,i)=>i) || [0]
-	return(<>{segList.map((segInt, segIdx)=>{
+	return(<>{preppedTR.config.segmentList.map((segInt, segIdx)=>{
 		const segment = sequence[segInt]
 		if (typeof segment?.layout === 'undefined'){  //doesSegmentExist?
 			return <></>
 		}
-		return(<>{overrides.config.vidKeys.map((vidKey, vidKeyIdx)=>{
+		return(<>{preppedTR.config.vidKeys.map((vidKey, vidKeyIdx)=>{
 			const idStub=`${segIdx}s${segInt}`
 			// console.log('seg', segInt, vidKey, overrides)
 			return(
 				<SingleComposition
-					transcript={transcript}
+					transcript={preppedTR}
 					overrides={overrides}
 					// assign internal var
 					idStub={idStub}
@@ -96,7 +91,7 @@ export function SingleComposition({
 	idSuffix='', // unique ID if clone & change only style, etc
 	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps${idSuffix}`,
 }){
-	console.log('simple', idSuffix, id, defaultProps.aspects)
+//console.log('simple', idSuffix, id, defaultProps.aspects)
 	return (
 		<Composition
 			id={id}
