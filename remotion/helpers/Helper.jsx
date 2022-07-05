@@ -1,7 +1,6 @@
 import { Composition, Sequence } from 'remotion'
 import * as useConvert from '../helpers/useConvert'
 import { prep }	from './prep-transcript'
-import { presets } from './settings'
 import { process }	from './process-transcript'
 
 import { FrameCount } from '../segments/FrameCount'
@@ -35,7 +34,6 @@ export function NiceComposition({
 	transcript,
 	overrides={},
 }){
-console.log('nice', transcript)
 	if (!transcript) return <></> //FIXME transcripts/warning
 	let preppedTR = prep(transcript, overrides)
 	const sequence = process(preppedTR).sequence
@@ -55,7 +53,7 @@ console.log('nice', transcript)
 					// assign internal var
 					idStub={idStub}
 					idSuffix={idSuffix}
-					// segInt={segInt}
+					segInt={segInt} // optimization?  so don't have to calc
 					segment={segment}
 					vidKey={vidKey}
 				/>
@@ -66,38 +64,34 @@ console.log('nice', transcript)
 
 /* `vidKey` & `segment` are singular (was SimpleComp) */
 export function SingleComposition({
-	// segInt=0,
 	transcript,
-	overrides={props:{style:{style: 'insert'}}},
+	// overrides={props:{style:{style: 'insert'}}},  REMOVED; use `prep(transcript, overrides)` with this
 
-	presetKey=overrides?.config?.presetKey ?? transcript.config?.presetKey ?? Object.keys(presets)[0],
-	preset=presets[presetKey],
-	vidKey=(typeof overrides.config.vidKey !== 'undefined') ? overrides.config.vidKey : Object.keys(preset.vidSizes)[0],
-	vidSize=preset.vidSizes[vidKey],
-	width=overrides?.config?.width ?? vidSize.dimention.w ?? 1920,
-	height=overrides?.config?.height ?? vidSize.dimention.h ?? 1080,
+	vidKey=(typeof transcript.config.vidKey !== 'undefined') ? transcript.config.vidKey : Object.keys(preset.vidSizes)[0],
+	vidSize=transcript.config.preset.vidSizes[vidKey],
+	width=transcript.config.width ?? vidSize.dimention.w ?? 1920,
+	height=transcript.config.height ?? vidSize.dimention.h ?? 1080,
 
-	segInt=(typeof overrides?.config?.segmentList !== 'undefined') ? overrides.config.segmentList[0] : 0,  //MAYBE 'segmentList' or 'segmentInt'
+	segInt=(typeof transcript.config.segmentList !== 'undefined') ? transcript.config.segmentList[0] : 0,
 	segment=process(transcript).sequence[segInt],
 	component=getComponent(segment.layout),
-	durationInFrames=segment.timeDurFrames ?? 99,
+	// durationInFrames=segment.timeDurFrames ?? 99,
 
 	styleToInsert=(segment.style) ? JSON.stringify(segment.style)?.slice(1,-1) : '',
-	styleBase=(overrides?.props?.style) ? JSON.stringify(overrides.props.style) : '',
-	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (styleToInsert) ? segment.style : (styleBase) ? overrides.props.style : {},
-	defaultProps={aspects:{...segment, ...overrides.props, ...{style:style}}}, //segment = aspects
+	styleBase=(transcript?.props?.style) ? JSON.stringify(transcript.props.style) : '',
+	style = (styleBase && styleToInsert) ? JSON.parse( styleBase.replace(/"style":"insert"/gm, styleToInsert) ) : (styleToInsert) ? segment.style : (styleBase) ? transcript.props.style : {},
+	defaultProps={aspects:{...segment, ...transcript.props, ...{style:style}}}, //segment = aspects
 
 	idStub='',
 	idSuffix='', // unique ID if clone & change only style, etc
-	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${preset.fps}fps${idSuffix}`,
+	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${transcript.config.preset.fps}fps${idSuffix}`,
 }){
-//console.log('simple', idSuffix, id, defaultProps.aspects)
 	return (
 		<Composition
 			id={id}
 			component={component}
-			durationInFrames={durationInFrames}
-			fps={preset.fps}
+			durationInFrames={segment.timeDurFrames}
+			fps={transcript.config.preset.fps}
 			width={width}
 			height={height}
 			defaultProps={defaultProps}
