@@ -1,5 +1,6 @@
-import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion'
-
+import { useEffect } from "react"
+import { useCurrentFrame, useVideoConfig, Sequence, Series,
+	continueRender, delayRender, staticFile } from "remotion"
 import * as useConvert from '../helpers/useConvert'
 
 export const TwoCenteredCode = ({
@@ -17,18 +18,8 @@ export const TwoCenteredCode = ({
 		timeDurSecs: 2,
 	}
 }) => {
-	const frame = useCurrentFrame();
-	const videoConfig = useVideoConfig();
-
-	const opacity = interpolate(
-		frame,
-		[videoConfig.durationInFrames - 25, videoConfig.durationInFrames - 15],
-		[1, 0],
-		{
-			extrapolateLeft: 'clamp',
-			extrapolateRight: 'clamp',
-		}
-	);
+	const FONTSIZE_CENTER = useConvert.sizeFontHeader(100)
+	const FONTSIZE_LOWER = useConvert.sizeFontHeader(68)
 
 	return (
 		<div className='seq-frame-count' style={{
@@ -60,28 +51,30 @@ export const TwoCenteredCode = ({
 			}}>
 				{aspects.rowTop}
 			</div>
-			<code
+			<div
 				style={{
 					gridArea: 'codeLeft',
 					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
-					fontSize: useConvert.sizeFontHeader(100),
+					fontFamily: 'fontMono', //via FontFace() JS API in parent
+					fontSize: FONTSIZE_CENTER,
 				}}
 			>
 				{aspects.codeLeft}
-			</code>
-			<code
+			</div>
+			<div
 				style={{
 					gridArea: 'codeRight',
 					alignSelf: 'end',
 					margin: '0 0.31em',
 					color: aspects.colorFrontCenter ?? aspects.colorFront,
-					fontSize: useConvert.sizeFontHeader(100),
+					fontFamily: 'fontMono',
+					fontSize: FONTSIZE_CENTER,
 				}}
 			>
 				{aspects.codeRight}
-			</code>
+			</div>
 			<div
 				style={{
 					gridArea: 'textLeft',
@@ -89,7 +82,7 @@ export const TwoCenteredCode = ({
 					margin: '0 1em',
 					placeItems: 'start',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFontHeader(68),
+					fontSize: FONTSIZE_LOWER,
 			}}>
 				{aspects.textLeft}
 			</div>
@@ -99,7 +92,7 @@ export const TwoCenteredCode = ({
 					alignSelf: 'start',
 					margin: '0 1em',
 					color: aspects.colorFront,
-					fontSize: useConvert.sizeFontHeader(68),
+					fontSize: FONTSIZE_LOWER,
 			}}>
 				{aspects.textRight}
 			</div>
@@ -108,7 +101,7 @@ export const TwoCenteredCode = ({
 					gridArea: 'rowBottom',
 					alignSelf: 'center',
 					margin: '0 1em',
-					fontSize: useConvert.sizeFontHeader(68),
+					fontSize: FONTSIZE_LOWER,
 				}}>
 					{aspects.rowBottom}
 				</div>

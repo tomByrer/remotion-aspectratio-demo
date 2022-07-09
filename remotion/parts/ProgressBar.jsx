@@ -21,7 +21,7 @@ export const ProgressBar = ({
 			margin: "15 0",
 			height: useConvert.sizeFontSmall(88),
 			width: useConvert.vw(97),
-			fontFamily: 'Hamlet',
+			fontFamily: 'fontMono', //via FontFace() JS API in parent
 			lineHeight: `${fontSize}px`,
 			fontSize: `${fontSize}px`,
 		}}>
@@ -32,7 +32,7 @@ export const ProgressBar = ({
 						lineHeight: `${fontSize}px`,
 						fontSize:`${fontSize}px`,
 					}}>
-						<code>{doneFixed +'%'}</code>
+						<span>{doneFixed +'%'}</span>
 					</div>
 				: null
 			}
@@ -50,7 +50,7 @@ export const ProgressBar = ({
 				// fontSize: `${fontSize}px`,
 			}}>
 				{(isNumberRight)
-					? <div style={{lineHeight: `${fontSize}px`,margin:`${toptweak} ${fontSize*.8}px 0 0`}}><code>{doneFixed +'%'}</code></div>
+					? <div style={{lineHeight: `${fontSize}px`,margin:`${toptweak} ${fontSize*.8}px 0 0`}}><span>{doneFixed +'%'}</span></div>
 					: null
 				}
 			</div>

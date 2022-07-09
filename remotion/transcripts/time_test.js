@@ -20,5 +20,6 @@ export const sequence = [
 		fontVWRatio: 44,
 		colorBack: 'hsl(27,65%,97%)',
 		colorFront: 'darkorange',
+		fadeText: 0.618,
 	},
 ]
