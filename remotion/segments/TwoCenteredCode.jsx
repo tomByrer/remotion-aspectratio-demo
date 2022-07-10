@@ -44,7 +44,7 @@ export const TwoCenteredCode = ({
 			<div
 				style={{
 					gridArea: 'rowTop',
-					margin: '0 0.31em',
+					alignSelf: 'center',
 					color: aspects.colorFront,
 					fontSize: useConvert.sizeFontHeader(61.8),
 					whiteSpace: 'pre-wrap',

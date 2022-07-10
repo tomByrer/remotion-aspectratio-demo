@@ -62,7 +62,14 @@ export const FrameCount = ({
 			.catch((err) => console.log("Error loading font", err));
 	})
 
-	aspects.rowTop = <span style={{fontFamily:'fontCopy', opacity:aspects.fadeText}}>w:{useVideoConfig().width} h:{useVideoConfig().height} fps:{useVideoConfig().fps}</span>
+	aspects.rowTop = <>
+		<p style={{margin:`0.618em`,fontFamily:'fontCopy',fontSize:'0.618em',lineHeight:'1em',opacity:aspects.fadeText}}>
+			©2022 Tom Byrer via ReactJS/Remotion
+		</p>
+		<p style={{margin:`0.618em`,fontFamily:'fontCopy',fontSize:'0.618em',lineHeight:'0.5em',opacity:aspects.fadeText}}>
+			w:{useVideoConfig().width} h:{useVideoConfig().height} fps:{useVideoConfig().fps}
+		</p>
+	</>
 
 	//MUST obtain frame count at top-level, before Sequence
 	// 1-index since humans start counting at one ;)
