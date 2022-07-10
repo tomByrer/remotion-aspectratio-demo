@@ -40,17 +40,20 @@ const main = async () => {
   //   width: 400,
   // }
 
-  let composition = reels[0]
-  const outputLocation = `out/${composition.id}.mp4`;
-  console.log("Attempting to render:", outputLocation);
-  await renderMedia({
-    composition,
-    serveUrl: bundleLocation,
-    codec: "h264",
-    outputLocation,
-    inputProps: composition.defaultProps,
-  });
+  for( let i=0; i<reels.length; i++ ){
+    const composition = reels[i]
+    const outputLocation = `out/${composition.id}.mp4`;
+    console.log("Attempting to render:", outputLocation);
+    await renderMedia({
+      composition,
+      serveUrl: bundleLocation,
+      codec: "h264",
+      outputLocation,
+      inputProps: composition.defaultProps,
+    });
+  }
   console.log("Render done!");
+
 };
 
 main();

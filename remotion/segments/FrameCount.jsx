@@ -67,10 +67,12 @@ export const FrameCount = ({
 	//MUST obtain frame count at top-level, before Sequence
 	// 1-index since humans start counting at one ;)
 	const FRAME_DIGITS = String( useVideoConfig().durationInFrames ).length
-	const SEC_DIGITS = String( useConvert.frames2seconds( useVideoConfig().durationInFrames) ).length
 	aspects.codeLeft = FormatLeadingChar( useCurrentFrame() +1, FRAME_DIGITS, 0 )
+
+	const SEC_DIGITS = String( useConvert.frames2seconds( useVideoConfig().durationInFrames) ).length
 	const ROUNDOFF = 2
 	aspects.codeRight = FormatLeadingChar( useConvert.frames2seconds(useCurrentFrame(),+1), SEC_DIGITS, ROUNDOFF )
+
 	aspects.textLeft = <span style={{fontFamily:'fontCopy', opacity:aspects.fadeText}}>frames of {useVideoConfig().durationInFrames}</span>
 	aspects.textRight = <span style={{fontFamily:'fontCopy', opacity:aspects.fadeText}}>seconds of {useConvert.frames2seconds( useVideoConfig().durationInFrames )}</span>
 
