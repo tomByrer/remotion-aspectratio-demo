@@ -1,12 +1,7 @@
 import { NiceComposition, SingleComposition } from './helpers/Helper'
 import { transcripts } from './transcripts'
-import defaultReel from './reel'
+import defaultReel from './final.reel'
 // import { time_test } from './reels/time_test'
-
-// let inputreels = defaultreels
-// export const setreels=()=>{
-// 	inputreels=time_test
-// }
 
 export const CompositionViaObj =(reels=[])=>{
 	reels = (reels.length==0) ? reels : defaultReel

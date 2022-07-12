@@ -3,4 +3,4 @@
 input_file=$1
 # variable=`cat ./remotion/reels/${input_file}.js`
 # echo $variable
-\cp "./remotion/reels/${input_file}.js" "./remotion/reel.js"
+\cp "./remotion/reels/${input_file}.js" "./remotion/final.reel.js"
