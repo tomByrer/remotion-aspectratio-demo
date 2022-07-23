@@ -1,13 +1,3 @@
-export const info = {
-	title: `TEST-TitleOutlined`,
-	credits: `Tom Byrer`,
-	v: 0.0,
-}
-export const config = {
-	presetKey: 'SMALL',
-	vidKeys: ['square'],
-}
-
 const data = {
 	colors: {
 		back: '#39ff14',
@@ -16,44 +6,31 @@ const data = {
 		DurSecs: 2,
 	}
 }
-export const sequence = [
-	{
-		layout: 'TitleOutlined',
-		timeDurSecs: data.time.DurSecs,
-		title: `${data.time.DurSecs}sec TitleOutlined test`,
+export const transcript = {
+	info: {
+		title: `TEST-TitleOutlined`,
+		credits: `Tom Byrer`,
+		v: 0.0,
 	},
-	{
-		layout: 'TitleOutlined',
-		timeDurSecs: data.time.DurSecs,
-		title: `${data.time.DurSecs}sec TitleOutlined w/style`,
-		style:{
-			//DEFAULT color:'black,
-			backgroundColor: data.colors.back,
-			fontStyle: 'italic',
+	config: {
+		presetKey: 'SMALL',
+		vidKeys: ['square'],
+	},
+	sequence: [
+		{
+			layout: 'TitleOutlined',
+			timeDurSecs: data.time.DurSecs,
+			title: `${data.time.DurSecs}sec TitleOutlined test`,
 		},
-	},
-]
-
-/*
-sequence:
-[
-  {
-    layout: 'IntroCode',
-    timeDurSecs: 2,
-    title: 'Testing IntroCode for -2- seconds',
-    colorBack: '#39ff14',
-    colorFront: '#d9d0c6',
-    fontVWRatio: 3.5,
-    timeSrtSec: 0,
-    timeSrtFrame: 0,
-    timeEndSec: 2,
-    timeEndFrame: 32,
-    timeDurFrames: 33
-  }
-]
-
-WebVTT - generated using TomByrer's process-transcript
-
-00:00:00.000 --> 00:00:02.000
-- Testing IntroCode for -2- seconds
-*/
+		{
+			layout: 'TitleOutlined',
+			timeDurSecs: data.time.DurSecs,
+			title: `${data.time.DurSecs}sec TitleOutlined w/style`,
+			style:{
+				//DEFAULT color:'black,
+				backgroundColor: data.colors.back,
+				fontStyle: 'italic',
+			},
+		},
+	]
+}

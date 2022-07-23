@@ -11,18 +11,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Players } from '../remotion/Players'
 
-import * as about_remotion from '../remotion/transcripts/about_remotion'
-import * as time_test from '../remotion/transcripts/time_test'
+import {transcript as about_remotion} from '../remotion/transcripts/about_remotion'
+import {transcript as time_test} from '../remotion/transcripts/time_test'
 
 export default function Home() {
 	const [showAbout, setShowAbout] = useState(true)
 	const [showTimeTest, setShowTimeTest] = useState(true)
-	function loadTranscript(t){
-		console.log('load', t)
-		// addLog('load '+ t)
-		setChosenTranscript(t)
-	}
-
+console.log("next about_",about_remotion)
 
 	return (
 		<div className="not-container">

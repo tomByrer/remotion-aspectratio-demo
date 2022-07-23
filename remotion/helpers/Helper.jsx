@@ -84,7 +84,7 @@ export function SingleComposition({
 
 	idStub='',
 	idSuffix='', // unique ID if clone & change only style, etc
-	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${transcript.config.preset.fps}fps${idSuffix}`,
+	id=`${transcript.info.title}-${idStub}-${component.name}-${width}x${height}-${transcript.config.preset.fps}fps${idSuffix}`.replace('_','-'),
 }){
 	return (
 		<Composition

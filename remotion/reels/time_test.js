@@ -6,7 +6,7 @@ export default time_test = [
 		overrides:{
 			config:{
 				presetKey:'SMALL', //FIX FPS only works in SMALL
-				vidKeys: ['SDTV', 'square'],
+				vidKeys: ['HDTV','SDTV','story','square'],
 				height: 200,
 				// segments: 'all', // no segments=all
 			},
