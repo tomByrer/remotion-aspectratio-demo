@@ -14,7 +14,7 @@ export const ProgressBar = ({
 	let doneFixed = donePercent.toFixed() //TODO float; see above
 
 	return (
-		<div class="progress" style={{
+		<div className="progress" style={{
 			backgroundColor: "#d8d8d89f",
 			borderRadius: fontSize,
 			position: "relative",
@@ -26,7 +26,7 @@ export const ProgressBar = ({
 			fontSize: `${fontSize}px`,
 		}}>
 			{(!isNumberRight)
-				? <div class="progress-right" style={{
+				? <div className="progress-right" style={{
 						position:'fixed',
 						margin:`${toptweak} 0 0 ${donePercent+1}%`,
 						lineHeight: `${fontSize}px`,
@@ -36,7 +36,7 @@ export const ProgressBar = ({
 					</div>
 				: null
 			}
-			<div class="progress-donePercent" style={{
+			<div className="progress-donePercent" style={{
 				display: "flex",
 				// alignItems: "end",
 				justifyContent: "end",
